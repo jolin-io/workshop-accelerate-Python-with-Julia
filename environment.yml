@@ -1,7 +1,0 @@
-name: fall-in-love-with-julia
-channels:
-  - conda-forge
-dependencies:
-  - python
-  - pip:
-    - webio_jupyter_extension
