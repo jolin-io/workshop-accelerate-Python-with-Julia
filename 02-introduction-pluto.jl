@@ -50,7 +50,10 @@ TLDR: everything is automatically re-executed for you
 a = 2
 
 # ╔═╡ 612af880-26e3-4ccd-9d26-20cc79162ac7
-b = @bind b PlutoUI.Slider(1:10, default=5, show_value=true)
+@bind b PlutoUI.Slider(1:10, default=5, show_value=true)
+
+# ╔═╡ adc1a4d8-e11f-408f-bebc-ce217dc8a289
+b
 
 # ╔═╡ 0099e358-0a4f-4b1c-84fa-16305b4e8dfe
 c = [a    b
@@ -276,6 +279,7 @@ My contact: [stephan.sahm@jolin.io](mailto:stephan.sahm@jolin.io), Founder of [J
 # ╟─04bed6e2-4514-4975-ba0e-991bd55853b7
 # ╠═64443e2c-7b56-43ce-aafb-f80b807840ed
 # ╠═612af880-26e3-4ccd-9d26-20cc79162ac7
+# ╠═adc1a4d8-e11f-408f-bebc-ce217dc8a289
 # ╠═0099e358-0a4f-4b1c-84fa-16305b4e8dfe
 # ╠═bb6d2e79-3741-4053-a26d-8fb84ab102d5
 # ╟─881026ba-cf61-4aff-9e84-786ac6e7af6f

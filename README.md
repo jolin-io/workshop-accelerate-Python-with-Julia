@@ -10,7 +10,6 @@ Learn how to accelerate Python with Julia with ease.
 
 [pluto direct link](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main?urlpath=pluto/open?path=/home/jovyan/02introduction-pluto.jl)
 
-[docker general link](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/)
-
+[docker general link](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main)
 
 python -m ipykernel install --user --name=$(basename $PWD)
