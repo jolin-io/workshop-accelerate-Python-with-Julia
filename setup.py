@@ -16,7 +16,6 @@ setuptools.setup(
       ]
   },
   install_requires=[
-    'julia >= 0.6.0',
     'jupyter-server-proxy @ git+http://github.com/fonsp/jupyter-server-proxy@3a58aa5005f942d0c208eab9a480f6ab171142ef',
   ],
 )
