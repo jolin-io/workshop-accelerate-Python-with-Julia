@@ -1,6 +1,11 @@
 import setuptools
+from Cython.Build import cythonize
 
 setuptools.setup(
+  # Cython
+  ext_modules = cythonize("agent.pyx"),
+
+  # Pluto
   name="jupyter-pluto-proxy",
   # py_modules rather than packages, since we only have 1 file
   py_modules=['plutoserver'],
@@ -10,5 +15,7 @@ setuptools.setup(
           'pluto = plutoserver:setup_plutoserver',
       ]
   },
-  install_requires=['jupyter-server-proxy @ git+http://github.com/fonsp/jupyter-server-proxy@3a58aa5005f942d0c208eab9a480f6ab171142ef'],
+  install_requires=[
+    'jupyter-server-proxy @ git+http://github.com/fonsp/jupyter-server-proxy@3a58aa5005f942d0c208eab9a480f6ab171142ef',
+  ],
 )
