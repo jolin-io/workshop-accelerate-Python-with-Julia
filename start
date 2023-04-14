@@ -1,5 +1,6 @@
 #!/bin/bash
 export JULIA_NUM_THREADS=auto
+# TODO this seems to break IJulia
 # reuse conda within julia
-export CONDA_JL_CONDA_EXE="/srv/conda/condabin/conda"
+# export CONDA_JL_CONDA_EXE="/srv/conda/condabin/conda"
 exec "$@"
