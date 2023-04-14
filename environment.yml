@@ -1,9 +1,18 @@
-name: fall-in-love-with-julia
 channels:
   - conda-forge
+#   - nodefaults
 dependencies:
-  - python
-  - kaggle
+  - python >=3.11
+  # - jupyterlab
+  - cython
+  - numpy >=1.14.0
+  - pandas
+  # The conda installation of julia interfers negatively with jupyter repo2docker
+  # if not using repo2docker, this is a neat way to include the julia dependency
+  # - julia >=1.8.5  # we install julia via plain Project.toml which is handled by repo2docker
+  # - pyjulia >=0.6.1  # when installed via pip, this package is simply called "julia"
   - pip
   - pip:
-    - webio_jupyter_extension
+    # install Cython package and Pluto server via setup.py
+    - julia >=0.6.1  # when installed via conda, this package is called "pyjulia"
+    - .
