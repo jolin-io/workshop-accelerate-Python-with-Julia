@@ -2,7 +2,6 @@ channels:
   - conda-forge
 #   - nodefaults
 dependencies:
-  - python >=3.11
   # - jupyterlab
   - cython
   - numpy >=1.14.0
@@ -10,11 +9,11 @@ dependencies:
   # The conda installation of julia interfers negatively with jupyter repo2docker
   # if not using repo2docker, this is a neat way to include the julia dependency
   # - julia >=1.8.5  # we install julia via plain Project.toml which is handled by repo2docker
-  # - pyjulia >=0.6.1  # when installed via pip, this package is simply called "julia"
+  # - pyjulia >=0.6.0  # when installed via pip, this package is simply called "julia"
   - pip
   - pip:
     # the pyjulia dependency needs to be installed via pip because of a dependency
-    - julia >=0.6.1  # when installed via conda, this package is called "pyjulia"
+    - julia >=0.6.0  # when installed via conda, this package is called "pyjulia"
     - juliacall
     # - git+https://github.com/cjdoris/PythonCall.jl # this is the dev version of "juliacall"
     - julia-numpy
