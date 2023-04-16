@@ -104,3 +104,76 @@ cdef class Agent():
         self.x = min(self.x, self.world_width)
         self.y = max(self.y, 0)
         self.y = min(self.y, self.world_height)
+
+
+cdef class Predator(Agent):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.vmax = 2.5
+
+cdef class Prey(Agent):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.vmax = 2.0
+
+cdef class Plant(Agent):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.vmax = 0.0
+
+
+cpdef void main(WORLD_WIDTH, WORLD_HEIGHT, TIMESTEPS) except *:
+    cdef int timestep
+    cdef list preys
+    cdef list predators
+    cdef list plants
+    cdef dict kwargs
+
+    # open the ouput file
+    # f = open('output.csv', 'w')
+    # print(0, ',', 'Title', ',', 'Predator Prey Relationship / Example 02 / Cython', file=f)
+
+    # create initial agents
+    kwargs = dict(
+        world_width=WORLD_WIDTH,
+        world_height=WORLD_HEIGHT,
+    )
+    preys = [Prey(**kwargs) for i in range(10)]
+    predators = [Predator(**kwargs) for i in range(10)]
+    plants = [Plant(**kwargs) for i in range(100)]
+
+    timestep = 0
+    while timestep < TIMESTEPS:
+        # update all agents
+        #[f.update([]) for f in plants]  # no need to update the plants; they do not move
+        [a.update(plants) for a in preys]
+        [a.update(preys) for a in predators]
+
+        # handle eaten and create new plant
+        plants = [p for p in plants if p.is_alive is True]
+        plants = plants + [Plant(**kwargs) for i in range(2)]
+
+        # handle eaten and create new preys
+        preys = [p for p in preys if p.is_alive is True]
+
+        for p in preys[:]:
+            if p.energy > 5:
+                p.energy = 0
+                preys.append(Prey(x = p.x + random.randint(-20, 20), y = p.y + random.randint(-20, 20), **kwargs))
+
+        # handle old and create new predators
+        predators = [p for p in predators if p.age < 2000]
+
+        for p in predators[:]:
+            if p.energy > 10:
+                p.energy = 0
+                predators.append(Predator(x = p.x + random.randint(-20, 20), y = p.y + random.randint(-20, 20), **kwargs))
+
+        # write data to output file
+        #[print(timestep, ',', 'Position', ',', 'Predator', ',', a.x, ',', a.y, file=f) for a in predators]
+        #[print(timestep, ',', 'Position',  ',', 'Prey', ',', a.x, ',', a.y, file=f) for a in preys]
+        #[print(timestep, ',', 'Position',  ',', 'Plant', ',', a.x, ',', a.y, file=f) for a in plants]
+
+        timestep = timestep + 1
+
+    print(len(predators), len(preys), len(plants))
