@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.14
+# v0.19.24
 
 using Markdown
 using InteractiveUtils
@@ -22,17 +22,18 @@ begin
 	import PlutoUI
 	import Plots
 	using PyCall
-
-	html"<button onclick='present()'>Enter presentation mode</button>"
 end
+
+# ╔═╡ ad2f0ea1-ca4c-47ad-8c6d-fe39730eaf2c
+md"""
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main?urlpath=pluto/open?path=./02introduction-pluto.jl)
+
+![](https://www.jolin.io/assets/Jolin/Jolin-Banner-Website-v1.3-darkmode.webp)
+"""
 
 # ╔═╡ c7d302a8-c0e4-11ec-24f9-5fd8c9a7e341
 md"""
-![](https://www.jolin.io/assets/Jolin/Jolin-Banner-Website-v1.1-darkmode.webp)
-I am Stephan Sahm, founder of [Jolin.io](https://www.jolin.io) IT consulting with focus on Julia.
-
-
-# Welcome to Julia Introduction in 15 minutes
+# Introduction to Julia II: Pluto, pure Julia
 **Key message:** Julia solves the two language problem
 
 - it is both easy to learn
@@ -261,16 +262,22 @@ python_performance / julia_performance.time
 
 # ╔═╡ 1860d1fb-1a33-4b00-a967-ad0f66e1b42f
 md"""
-## Thank you for your attention
+## Further resources
 
-You are welcome to contact me for questions, suggestions, and support.
+- [learning Julia](https://julialang.org/learning/)
+- [pyjulia / PyCall.jl](https://github.com/JuliaPy/PyCall.jl) ⚠️CAUTION this is not the same as [juliacall / PythonCall.jl](https://cjdoris.github.io/PythonCall.jl/stable/)⚠️
 
-My contact: [stephan.sahm@jolin.io](mailto:stephan.sahm@jolin.io), Founder of [Jolin.io](https://www.jolin.io)
+## Next
 
-![](https://www.jolin.io/assets/Jolin/Jolin-Banner-Website-v1.1-darkmode.webp)
+Next, we will look at one toy example and compare Cython, C++, and Julia
+
+[Next Notebook](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main?filepath=03-example-cython-vs-cpp-vs-julia.ipynb)
+
+![](https://www.jolin.io/assets/Jolin/Jolin-Banner-Website-v1.3-darkmode.webp)
 """
 
 # ╔═╡ Cell order:
+# ╟─ad2f0ea1-ca4c-47ad-8c6d-fe39730eaf2c
 # ╟─2c1c69cb-69e6-486b-9e81-3d5c30999193
 # ╟─c7d302a8-c0e4-11ec-24f9-5fd8c9a7e341
 # ╟─04bed6e2-4514-4975-ba0e-991bd55853b7
