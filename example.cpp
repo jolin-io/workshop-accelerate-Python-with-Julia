@@ -1,5 +1,5 @@
 // Use something like this to compile:
-// g++ example_02.cpp -o example_02  -std=c++11 -O3
+// g++ example.cpp -o example  -std=c++11 -O3
 
 #include <iostream>
 #include <sstream>
@@ -134,6 +134,8 @@ class Plant: public Agent {
 
 int main(int argc, char *argv[]) {
     srand (time(NULL));
+    int timestep_max = atoi(argv[1]);
+    // std::cout << "timestep_max = " << timestep_max;
 
     std::ios_base::sync_with_stdio(false);
 
@@ -156,12 +158,12 @@ int main(int argc, char *argv[]) {
     }
 
     std::ofstream outfile;
-    outfile.open ("output.csv");
+    // outfile.open ("output.csv");
 
     int timestep = 0;
-    outfile << timestep << ',' << "Title" << ',' << "Predator Prey Relationship / Example 02 / C++" << std::endl;
+    // outfile << timestep << ',' << "Title" << ',' << "Predator Prey Relationship / Example 02 / C++" << std::endl;
 
-    while (timestep < 10000) {
+    while (timestep < timestep_max) {
 
         // update all agents
         for (auto p: predators) { p->update(preys); }
@@ -235,6 +237,6 @@ int main(int argc, char *argv[]) {
         timestep++;
     }
 
-    outfile.close();
+    // outfile.close();
     std::cout << "ok " << predators.size() << ", " << preys.size() << ", " << plants.size() << std::endl;
 }

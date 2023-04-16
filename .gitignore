@@ -1,4 +1,6 @@
 .venv
 /build
 /jupyter_pluto_proxy.egg-info
-/.ipynb_checkpoints
+.ipynb_checkpoints
+.vscode
+.CondaPkg

@@ -1,5 +1,8 @@
 #!/bin/bash
 export JULIA_NUM_THREADS=auto
+# pythoncall & pycall https://cjdoris.github.io/PythonCall.jl/dev/pycall/
+export JULIA_PYTHONCALL_EXE="@PyCall"
+export PYTHON_JULIACALL_THREADS=auto
 # TODO this seems to break IJulia
 # reuse conda within julia
 # export CONDA_JL_CONDA_EXE="/srv/conda/condabin/conda"
