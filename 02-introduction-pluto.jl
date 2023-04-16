@@ -51,7 +51,10 @@ TLDR: everything is automatically re-executed for you
 a = 2
 
 # ╔═╡ 612af880-26e3-4ccd-9d26-20cc79162ac7
-b = @bind b PlutoUI.Slider(1:10, default=5, show_value=true)
+@bind b PlutoUI.Slider(1:10, default=5, show_value=true)
+
+# ╔═╡ 0a79b260-889a-4d01-8170-47cf279d92ef
+2b
 
 # ╔═╡ 0099e358-0a4f-4b1c-84fa-16305b4e8dfe
 c = [a    b
@@ -184,7 +187,11 @@ Example is adapted from https://juliacomputing.com/assets/pdf/JuliaVsPython.pdf
 """
 
 # ╔═╡ 6777dc04-c5e4-4983-9ed8-87945969865b
-width = @bind width PlutoUI.Slider(10:10:250, default=50, show_value=true)
+md"""
+width = $(
+	@bind width PlutoUI.Slider(10:10:250, default=50, show_value=true)
+)
+"""
 
 # ╔═╡ 33fa73a0-87ef-4557-a2b2-80b60a20cb2d
 md"""
@@ -283,6 +290,7 @@ Next, we will look at one toy example and compare Cython, C++, and Julia
 # ╟─04bed6e2-4514-4975-ba0e-991bd55853b7
 # ╠═64443e2c-7b56-43ce-aafb-f80b807840ed
 # ╠═612af880-26e3-4ccd-9d26-20cc79162ac7
+# ╠═0a79b260-889a-4d01-8170-47cf279d92ef
 # ╠═0099e358-0a4f-4b1c-84fa-16305b4e8dfe
 # ╠═bb6d2e79-3741-4053-a26d-8fb84ab102d5
 # ╟─881026ba-cf61-4aff-9e84-786ac6e7af6f
