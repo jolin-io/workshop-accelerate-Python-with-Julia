@@ -4,7 +4,6 @@ channels:
 dependencies:
   # - jupyterlab
   - cython
-  - linux-perf
   - numpy >=1.14.0
   - pandas
   # The conda installation of julia interfers negatively with jupyter repo2docker
