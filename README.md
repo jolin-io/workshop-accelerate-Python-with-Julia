@@ -26,7 +26,7 @@ The links above will spawn jupyter notebook on mybinder.org. One CPU and 1-2 GB 
 
 ### Alternative local installation
 
-If mybinder.org is down, or you like to have things locally, you can do so easily. (Note that the first run can take 15 minutes, after that it is instantly loaded from cache).
+If mybinder.org is down, or you like to have things locally, you can do so easily. (Note that the first run can take 5 minutes, after that it is instantly loaded from cache).
 
 Install [`docker`](https://docs.docker.com/get-docker/) and [`jupyter-repo2docker`](https://repo2docker.readthedocs.io/en/latest/install.html), and then create your own local environment with the following command.
 ```
