@@ -33,12 +33,6 @@ Install [`docker`](https://docs.docker.com/get-docker/) and [`jupyter-repo2docke
 jupyter-repo2docker https://github.com/jolin-io/workshop-accelerate-Python-with-Julia
 ```
 
-[pluto direct link]
-
-[docker general link](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main)
-
-python -m ipykernel install --user --name=$(basename $PWD)
-
 
 ## Jolin.io
 
