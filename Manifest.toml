@@ -2,7 +2,7 @@
 
 julia_version = "1.8.5"
 manifest_format = "2.0"
-project_hash = "bd1a580b7ba8258449020e31c1aca89fd9b5901c"
+project_hash = "1067ed174c86661b9764837b3f5724f97b2f2c39"
 
 [[deps.AbstractPlutoDingetjes]]
 deps = ["Pkg"]
@@ -523,11 +523,6 @@ git-tree-sha1 = "65f28ad4b594aebe22157d6fac869786a255b7eb"
 uuid = "6c6e2e6c-3030-632d-7369-2d6c69616d65"
 version = "0.1.4"
 
-[[deps.MLStyle]]
-git-tree-sha1 = "bc38dff0548128765760c79eb7388a4b37fae2c8"
-uuid = "d8e11817-5142-5d16-987a-aa16d5891078"
-version = "0.4.17"
-
 [[deps.MacroTools]]
 deps = ["Markdown", "Random"]
 git-tree-sha1 = "42324d08725e200c23d4dfb549e0d5d89dede2d2"
@@ -925,12 +920,6 @@ version = "0.9.12"
 git-tree-sha1 = "aadb748be58b492045b4f56166b5188aa63ce549"
 uuid = "410a4b4d-49e4-4fbc-ab6d-cb71b17b3775"
 version = "0.1.7"
-
-[[deps.TyPython]]
-deps = ["IOCapture", "Libdl", "LinearAlgebra", "MLStyle", "MacroTools", "Serialization", "UUIDs"]
-path = "/home/ssahm/Projects/Jolin.io/workshop-accelerate-Python-with-Julia/.venv/lib/python3.10/site-packages/jnumpy/TyPython"
-uuid = "9c4566a2-237d-4c69-9a5e-9d27b7d0881b"
-version = "0.2.4"
 
 [[deps.URIs]]
 git-tree-sha1 = "074f993b0ca030848b897beff716d93aca60f06a"
