@@ -1,5 +1,6 @@
 #!/bin/bash
-export JULIA_NUM_THREADS=auto
+# we use threads=1 because there seems to be a weird interaction with juliacall and multiple threads
+export JULIA_NUM_THREADS=1
 # juliacall/pythoncall
-export PYTHON_JULIACALL_THREADS=auto
+export PYTHON_JULIACALL_THREADS=1
 exec "$@"
