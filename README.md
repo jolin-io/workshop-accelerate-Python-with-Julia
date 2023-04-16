@@ -14,7 +14,7 @@ Learn how to accelerate Python with Julia with ease.
 
 ## Content
 
-1. [**Introduction to Julia I:** calling Julia from Python](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main?filepath=02-introduction-julia.ipynb)
+1. [**Introduction to Julia I:** calling Julia from Python](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main?filepath=01-introduction-julia.ipynb)
 2. [**Introduction to Julia II:** Pluto, pure Julia](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main?urlpath=pluto/open?path=./02-introduction-pluto.jl)
 3. [**Simulation example:** Python vs Cython vs C++ vs Julia](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main?filepath=03-example-cython-vs-cpp-vs-julia.ipynb)
 
