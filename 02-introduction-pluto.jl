@@ -26,7 +26,7 @@ end
 
 # ╔═╡ ad2f0ea1-ca4c-47ad-8c6d-fe39730eaf2c
 md"""
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main?urlpath=pluto/open?path=./02introduction-pluto.jl)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jolin-io/workshop-accelerate-Python-with-Julia/main?urlpath=pluto/open?path=./02-introduction-pluto.jl)
 
 ![](https://www.jolin.io/assets/Jolin/Jolin-Banner-Website-v1.3-darkmode.webp)
 """
