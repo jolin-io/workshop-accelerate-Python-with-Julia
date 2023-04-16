@@ -15,7 +15,5 @@ dependencies:
     # the pyjulia dependency needs to be installed via pip because of a dependency
     - julia >=0.6.0  # when installed via conda, this package is called "pyjulia"
     - juliacall
-    # - git+https://github.com/cjdoris/PythonCall.jl # this is the dev version of "juliacall"
-    - julia-numpy
     # install Cython package and Pluto server via setup.py
     - .
