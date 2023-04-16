@@ -9,7 +9,7 @@
 | Email  | stephan.sahm@jolin.io |
 
 
-Learn how to accelerate Python with Julia with ease.
+Learn how to easily speed up Python with Julia.
 
 
 ## Content
