@@ -15,6 +15,8 @@ cdef class Agent():
     cdef public double vmax
     cdef public int age
     cdef public int energy
+    cdef public bint is_alive
+
     cdef Agent target
 
     def __init__(self, x=None, y=None, world_width=0, world_height=0):
@@ -145,9 +147,11 @@ cpdef void main(WORLD_WIDTH, WORLD_HEIGHT, TIMESTEPS) except *:
     timestep = 0
     while timestep < TIMESTEPS:
         # update all agents
-        #[f.update([]) for f in plants]  # no need to update the plants; they do not move
-        [a.update(plants) for a in preys]
-        [a.update(preys) for a in predators]
+        # no need to update the plants; they do not move
+        for a in preys:
+            a.update(plants)
+        for a in predators:
+            a.update(preys)
 
         # handle eaten and create new plant
         plants = [p for p in plants if p.is_alive is True]

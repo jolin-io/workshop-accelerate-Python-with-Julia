@@ -191,7 +191,7 @@ int main(int argc, char *argv[]) {
 
         std::vector<Agent*>::size_type preys_size = preys.size();
         for (std::vector<Agent*>::size_type i = 0; i < preys_size; ++i) {
-            if (preys[i]->energy > 10) {
+            if (preys[i]->energy > 5) {
                 preys[i]->energy = 0;
                 Prey* np = new Prey();
                 np->x = preys[i]->x + -20 + 40 * (rand() / (RAND_MAX + 1.0));
@@ -206,7 +206,7 @@ int main(int argc, char *argv[]) {
                 predators.begin(),
                 predators.end(),
                 [](const Agent* a)
-                {return a->age > 2000;}),
+                {return a->age >= 2000;}),
             predators.end());
 
         std::vector<Agent*>::size_type predators_size = predators.size();

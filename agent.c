@@ -991,11 +991,12 @@ struct __pyx_obj_5agent_Agent {
   double vmax;
   int age;
   int energy;
+  int is_alive;
   struct __pyx_obj_5agent_Agent *target;
 };
 
 
-/* "agent.pyx":109
+/* "agent.pyx":111
  * 
  * 
  * cdef class Predator(Agent):             # <<<<<<<<<<<<<<
@@ -1007,7 +1008,7 @@ struct __pyx_obj_5agent_Predator {
 };
 
 
-/* "agent.pyx":114
+/* "agent.pyx":116
  *         self.vmax = 2.5
  * 
  * cdef class Prey(Agent):             # <<<<<<<<<<<<<<
@@ -1019,7 +1020,7 @@ struct __pyx_obj_5agent_Prey {
 };
 
 
-/* "agent.pyx":119
+/* "agent.pyx":121
  *         self.vmax = 2.0
  * 
  * cdef class Plant(Agent):             # <<<<<<<<<<<<<<
@@ -1046,7 +1047,7 @@ struct __pyx_vtabstruct_5agent_Agent {
 static struct __pyx_vtabstruct_5agent_Agent *__pyx_vtabptr_5agent_Agent;
 
 
-/* "agent.pyx":109
+/* "agent.pyx":111
  * 
  * 
  * cdef class Predator(Agent):             # <<<<<<<<<<<<<<
@@ -1060,7 +1061,7 @@ struct __pyx_vtabstruct_5agent_Predator {
 static struct __pyx_vtabstruct_5agent_Predator *__pyx_vtabptr_5agent_Predator;
 
 
-/* "agent.pyx":114
+/* "agent.pyx":116
  *         self.vmax = 2.5
  * 
  * cdef class Prey(Agent):             # <<<<<<<<<<<<<<
@@ -1074,7 +1075,7 @@ struct __pyx_vtabstruct_5agent_Prey {
 static struct __pyx_vtabstruct_5agent_Prey *__pyx_vtabptr_5agent_Prey;
 
 
-/* "agent.pyx":119
+/* "agent.pyx":121
  *         self.vmax = 2.0
  * 
  * cdef class Plant(Agent):             # <<<<<<<<<<<<<<
@@ -1265,15 +1266,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
 #define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
 #endif
 
-/* PyObjectSetAttrStr.proto */
-#if CYTHON_USE_TYPE_SLOTS
-#define __Pyx_PyObject_DelAttrStr(o,n) __Pyx_PyObject_SetAttrStr(o, n, NULL)
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value);
-#else
-#define __Pyx_PyObject_DelAttrStr(o,n)   PyObject_DelAttr(o,n)
-#define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
-#endif
-
 /* PyObjectCall2Args.proto */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2);
 
@@ -1371,6 +1363,15 @@ static CYTHON_INLINE PyObject* __Pyx_PyTuple_GetSlice(PyObject* src, Py_ssize_t 
 #else
 #define __Pyx_PyList_GetSlice(seq, start, stop)   PySequence_GetSlice(seq, start, stop)
 #define __Pyx_PyTuple_GetSlice(seq, start, stop)  PySequence_GetSlice(seq, start, stop)
+#endif
+
+/* PyObjectSetAttrStr.proto */
+#if CYTHON_USE_TYPE_SLOTS
+#define __Pyx_PyObject_DelAttrStr(o,n) __Pyx_PyObject_SetAttrStr(o, n, NULL)
+static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value);
+#else
+#define __Pyx_PyObject_DelAttrStr(o,n)   PyObject_DelAttr(o,n)
+#define __Pyx_PyObject_SetAttrStr(o,n,v) PyObject_SetAttr(o,n,v)
 #endif
 
 /* ListAppend.proto */
@@ -1649,7 +1650,7 @@ static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_pyx_unpickle_Agent[] = "__pyx_unpickle_Agent";
 static const char __pyx_k_pyx_unpickle_Plant[] = "__pyx_unpickle_Plant";
 static const char __pyx_k_pyx_unpickle_Predator[] = "__pyx_unpickle_Predator";
-static const char __pyx_k_Incompatible_checksums_0x_x_vs_0[] = "Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))";
+static const char __pyx_k_Incompatible_checksums_0x_x_vs_0[] = "Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))";
 static PyObject *__pyx_n_s_Agent;
 static PyObject *__pyx_kp_s_Incompatible_checksums_0x_x_vs_0;
 static PyObject *__pyx_n_s_PickleError;
@@ -1714,6 +1715,8 @@ static PyObject *__pyx_pf_5agent_5Agent_3age___get__(struct __pyx_obj_5agent_Age
 static int __pyx_pf_5agent_5Agent_3age_2__set__(struct __pyx_obj_5agent_Agent *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_5agent_5Agent_6energy___get__(struct __pyx_obj_5agent_Agent *__pyx_v_self); /* proto */
 static int __pyx_pf_5agent_5Agent_6energy_2__set__(struct __pyx_obj_5agent_Agent *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_5agent_5Agent_8is_alive___get__(struct __pyx_obj_5agent_Agent *__pyx_v_self); /* proto */
+static int __pyx_pf_5agent_5Agent_8is_alive_2__set__(struct __pyx_obj_5agent_Agent *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5agent_Agent *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_5agent_5Agent_6__setstate_cython__(struct __pyx_obj_5agent_Agent *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_5agent_8Predator___init__(struct __pyx_obj_5agent_Predator *__pyx_v_self, PyObject *__pyx_v_kwargs); /* proto */
@@ -1739,9 +1742,9 @@ static PyObject *__pyx_int_5;
 static PyObject *__pyx_int_10;
 static PyObject *__pyx_int_20;
 static PyObject *__pyx_int_2000;
-static PyObject *__pyx_int_3944808;
-static PyObject *__pyx_int_148905838;
-static PyObject *__pyx_int_213349252;
+static PyObject *__pyx_int_12639386;
+static PyObject *__pyx_int_85308422;
+static PyObject *__pyx_int_264045590;
 static PyObject *__pyx_int_neg_20;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
@@ -1755,7 +1758,7 @@ static PyObject *__pyx_codeobj__8;
 static PyObject *__pyx_codeobj__10;
 /* Late includes */
 
-/* "agent.pyx":20
+/* "agent.pyx":22
  *     cdef Agent target
  * 
  *     def __init__(self, x=None, y=None, world_width=0, world_height=0):             # <<<<<<<<<<<<<<
@@ -1825,7 +1828,7 @@ static int __pyx_pw_5agent_5Agent_1__init__(PyObject *__pyx_v_self, PyObject *__
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 20, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 22, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -1848,7 +1851,7 @@ static int __pyx_pw_5agent_5Agent_1__init__(PyObject *__pyx_v_self, PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 20, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 22, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("agent.Agent.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1877,27 +1880,27 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "agent.pyx":21
+  /* "agent.pyx":23
  * 
  *     def __init__(self, x=None, y=None, world_width=0, world_height=0):
  *         self.world_width = world_width             # <<<<<<<<<<<<<<
  *         self.world_height = world_height
  * 
  */
-  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_world_width); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_world_width); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 23, __pyx_L1_error)
   __pyx_v_self->world_width = __pyx_t_1;
 
-  /* "agent.pyx":22
+  /* "agent.pyx":24
  *     def __init__(self, x=None, y=None, world_width=0, world_height=0):
  *         self.world_width = world_width
  *         self.world_height = world_height             # <<<<<<<<<<<<<<
  * 
  *         # default values
  */
-  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_world_height); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_world_height); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 24, __pyx_L1_error)
   __pyx_v_self->world_height = __pyx_t_1;
 
-  /* "agent.pyx":25
+  /* "agent.pyx":27
  * 
  *         # default values
  *         self.vmax = 2.0             # <<<<<<<<<<<<<<
@@ -1906,21 +1909,21 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
  */
   __pyx_v_self->vmax = 2.0;
 
-  /* "agent.pyx":28
+  /* "agent.pyx":30
  * 
  *         # initial position
  *         self.x = x if x else random.randint(0, world_width)             # <<<<<<<<<<<<<<
  *         self.y = y if y else random.randint(0, world_height)
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_x); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_x); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 30, __pyx_L1_error)
   if (__pyx_t_2) {
-    __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_v_x); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_v_x); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L1_error)
     __pyx_t_1 = __pyx_t_3;
   } else {
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_randint); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_randint); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -1938,7 +1941,7 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_int_0, __pyx_v_world_width};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
@@ -1946,13 +1949,13 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
       PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_int_0, __pyx_v_world_width};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
     #endif
     {
-      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -1963,32 +1966,32 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
       __Pyx_INCREF(__pyx_v_world_width);
       __Pyx_GIVEREF(__pyx_v_world_width);
       PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_world_width);
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_1 = __pyx_t_3;
   }
   __pyx_v_self->x = __pyx_t_1;
 
-  /* "agent.pyx":29
+  /* "agent.pyx":31
  *         # initial position
  *         self.x = x if x else random.randint(0, world_width)
  *         self.y = y if y else random.randint(0, world_height)             # <<<<<<<<<<<<<<
  * 
  *         # initial velocity
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_y); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_y); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 31, __pyx_L1_error)
   if (__pyx_t_2) {
-    __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_v_y); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_v_y); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
     __pyx_t_1 = __pyx_t_3;
   } else {
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_random); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_random); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 31, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_randint); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_randint); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 31, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_6 = NULL;
@@ -2006,7 +2009,7 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_int_0, __pyx_v_world_height};
-      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 31, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
@@ -2014,13 +2017,13 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
       PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_int_0, __pyx_v_world_height};
-      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 31, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if (__pyx_t_6) {
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -2031,18 +2034,18 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
       __Pyx_INCREF(__pyx_v_world_height);
       __Pyx_GIVEREF(__pyx_v_world_height);
       PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_7, __pyx_v_world_height);
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 31, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 29, __pyx_L1_error)
+    __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_1 = __pyx_t_3;
   }
   __pyx_v_self->y = __pyx_t_1;
 
-  /* "agent.pyx":32
+  /* "agent.pyx":34
  * 
  *         # initial velocity
  *         self.dx = 0             # <<<<<<<<<<<<<<
@@ -2051,7 +2054,7 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
  */
   __pyx_v_self->dx = 0.0;
 
-  /* "agent.pyx":33
+  /* "agent.pyx":35
  *         # initial velocity
  *         self.dx = 0
  *         self.dy = 0             # <<<<<<<<<<<<<<
@@ -2060,16 +2063,16 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
  */
   __pyx_v_self->dy = 0.0;
 
-  /* "agent.pyx":36
+  /* "agent.pyx":38
  * 
  *         # inital values
  *         self.is_alive = True             # <<<<<<<<<<<<<<
  *         self.target = None
  *         self.age = 0
  */
-  if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_is_alive, Py_True) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_v_self->is_alive = 1;
 
-  /* "agent.pyx":37
+  /* "agent.pyx":39
  *         # inital values
  *         self.is_alive = True
  *         self.target = None             # <<<<<<<<<<<<<<
@@ -2082,7 +2085,7 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
   __Pyx_DECREF(((PyObject *)__pyx_v_self->target));
   __pyx_v_self->target = ((struct __pyx_obj_5agent_Agent *)Py_None);
 
-  /* "agent.pyx":38
+  /* "agent.pyx":40
  *         self.is_alive = True
  *         self.target = None
  *         self.age = 0             # <<<<<<<<<<<<<<
@@ -2091,7 +2094,7 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
  */
   __pyx_v_self->age = 0;
 
-  /* "agent.pyx":39
+  /* "agent.pyx":41
  *         self.target = None
  *         self.age = 0
  *         self.energy = 0             # <<<<<<<<<<<<<<
@@ -2100,7 +2103,7 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
  */
   __pyx_v_self->energy = 0;
 
-  /* "agent.pyx":20
+  /* "agent.pyx":22
  *     cdef Agent target
  * 
  *     def __init__(self, x=None, y=None, world_width=0, world_height=0):             # <<<<<<<<<<<<<<
@@ -2123,7 +2126,7 @@ static int __pyx_pf_5agent_5Agent___init__(struct __pyx_obj_5agent_Agent *__pyx_
   return __pyx_r;
 }
 
-/* "agent.pyx":41
+/* "agent.pyx":43
  *         self.energy = 0
  * 
  *     cpdef void update(self, list food) except *:             # <<<<<<<<<<<<<<
@@ -2148,8 +2151,8 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
   PyObject *__pyx_t_4 = NULL;
   int __pyx_t_5;
   int __pyx_t_6;
-  int __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
+  Py_ssize_t __pyx_t_7;
+  int __pyx_t_8;
   double __pyx_t_9;
   long __pyx_t_10;
   double __pyx_t_11;
@@ -2167,7 +2170,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_update); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_5agent_5Agent_3update)) {
         __Pyx_INCREF(__pyx_t_1);
@@ -2183,7 +2186,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_food) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_food);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2203,7 +2206,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
     #endif
   }
 
-  /* "agent.pyx":48
+  /* "agent.pyx":50
  *         cdef Agent  a
  * 
  *         self.age = self.age + 1             # <<<<<<<<<<<<<<
@@ -2212,7 +2215,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   __pyx_v_self->age = (__pyx_v_self->age + 1);
 
-  /* "agent.pyx":51
+  /* "agent.pyx":53
  * 
  *         # we can't move
  *         if self.vmax == 0:             # <<<<<<<<<<<<<<
@@ -2222,7 +2225,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
   __pyx_t_5 = ((__pyx_v_self->vmax == 0.0) != 0);
   if (__pyx_t_5) {
 
-    /* "agent.pyx":52
+    /* "agent.pyx":54
  *         # we can't move
  *         if self.vmax == 0:
  *             return             # <<<<<<<<<<<<<<
@@ -2231,7 +2234,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
     goto __pyx_L0;
 
-    /* "agent.pyx":51
+    /* "agent.pyx":53
  * 
  *         # we can't move
  *         if self.vmax == 0:             # <<<<<<<<<<<<<<
@@ -2240,29 +2243,25 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   }
 
-  /* "agent.pyx":55
+  /* "agent.pyx":57
  * 
  *         # target is dead, don't chase it further
  *         if self.target and not self.target.is_alive:             # <<<<<<<<<<<<<<
  *             self.target = None
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->target)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->target)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
   if (__pyx_t_6) {
   } else {
     __pyx_t_5 = __pyx_t_6;
     goto __pyx_L5_bool_binop_done;
   }
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self->target), __pyx_n_s_is_alive); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = ((!__pyx_t_6) != 0);
-  __pyx_t_5 = __pyx_t_7;
+  __pyx_t_6 = ((!(__pyx_v_self->target->is_alive != 0)) != 0);
+  __pyx_t_5 = __pyx_t_6;
   __pyx_L5_bool_binop_done:;
   if (__pyx_t_5) {
 
-    /* "agent.pyx":56
+    /* "agent.pyx":58
  *         # target is dead, don't chase it further
  *         if self.target and not self.target.is_alive:
  *             self.target = None             # <<<<<<<<<<<<<<
@@ -2275,7 +2274,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
     __Pyx_DECREF(((PyObject *)__pyx_v_self->target));
     __pyx_v_self->target = ((struct __pyx_obj_5agent_Agent *)Py_None);
 
-    /* "agent.pyx":55
+    /* "agent.pyx":57
  * 
  *         # target is dead, don't chase it further
  *         if self.target and not self.target.is_alive:             # <<<<<<<<<<<<<<
@@ -2284,17 +2283,17 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   }
 
-  /* "agent.pyx":59
+  /* "agent.pyx":61
  * 
  *         # eat the target if close enough
  *         if self.target:             # <<<<<<<<<<<<<<
  *             squared_dist = (self.x - self.target.x) ** 2 + (self.y - self.target.y) ** 2
  *             if squared_dist < 400:
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->target)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->target)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
   if (__pyx_t_5) {
 
-    /* "agent.pyx":60
+    /* "agent.pyx":62
  *         # eat the target if close enough
  *         if self.target:
  *             squared_dist = (self.x - self.target.x) ** 2 + (self.y - self.target.y) ** 2             # <<<<<<<<<<<<<<
@@ -2303,7 +2302,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
     __pyx_v_squared_dist = (pow((__pyx_v_self->x - __pyx_v_self->target->x), 2.0) + pow((__pyx_v_self->y - __pyx_v_self->target->y), 2.0));
 
-    /* "agent.pyx":61
+    /* "agent.pyx":63
  *         if self.target:
  *             squared_dist = (self.x - self.target.x) ** 2 + (self.y - self.target.y) ** 2
  *             if squared_dist < 400:             # <<<<<<<<<<<<<<
@@ -2313,16 +2312,16 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
     __pyx_t_5 = ((__pyx_v_squared_dist < 400.0) != 0);
     if (__pyx_t_5) {
 
-      /* "agent.pyx":62
+      /* "agent.pyx":64
  *             squared_dist = (self.x - self.target.x) ** 2 + (self.y - self.target.y) ** 2
  *             if squared_dist < 400:
  *                 self.target.is_alive = False             # <<<<<<<<<<<<<<
  *                 self.energy = self.energy + 1
  * 
  */
-      if (__Pyx_PyObject_SetAttrStr(((PyObject *)__pyx_v_self->target), __pyx_n_s_is_alive, Py_False) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
+      __pyx_v_self->target->is_alive = 0;
 
-      /* "agent.pyx":63
+      /* "agent.pyx":65
  *             if squared_dist < 400:
  *                 self.target.is_alive = False
  *                 self.energy = self.energy + 1             # <<<<<<<<<<<<<<
@@ -2331,7 +2330,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
       __pyx_v_self->energy = (__pyx_v_self->energy + 1);
 
-      /* "agent.pyx":61
+      /* "agent.pyx":63
  *         if self.target:
  *             squared_dist = (self.x - self.target.x) ** 2 + (self.y - self.target.y) ** 2
  *             if squared_dist < 400:             # <<<<<<<<<<<<<<
@@ -2340,7 +2339,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
     }
 
-    /* "agent.pyx":59
+    /* "agent.pyx":61
  * 
  *         # eat the target if close enough
  *         if self.target:             # <<<<<<<<<<<<<<
@@ -2349,18 +2348,18 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   }
 
-  /* "agent.pyx":66
+  /* "agent.pyx":68
  * 
  *         # agent doesn't have a target, find a new one
  *         if not self.target:             # <<<<<<<<<<<<<<
  *             min_dist = 9999999
  *             min_agent = None
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->target)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 66, __pyx_L1_error)
-  __pyx_t_7 = ((!__pyx_t_5) != 0);
-  if (__pyx_t_7) {
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->target)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
+  __pyx_t_6 = ((!__pyx_t_5) != 0);
+  if (__pyx_t_6) {
 
-    /* "agent.pyx":67
+    /* "agent.pyx":69
  *         # agent doesn't have a target, find a new one
  *         if not self.target:
  *             min_dist = 9999999             # <<<<<<<<<<<<<<
@@ -2369,7 +2368,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
     __pyx_v_min_dist = 9999999.0;
 
-    /* "agent.pyx":68
+    /* "agent.pyx":70
  *         if not self.target:
  *             min_dist = 9999999
  *             min_agent = None             # <<<<<<<<<<<<<<
@@ -2379,7 +2378,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
     __Pyx_INCREF(Py_None);
     __pyx_v_min_agent = ((struct __pyx_obj_5agent_Agent *)Py_None);
 
-    /* "agent.pyx":69
+    /* "agent.pyx":71
  *             min_dist = 9999999
  *             min_agent = None
  *             for aa in food:             # <<<<<<<<<<<<<<
@@ -2388,34 +2387,34 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
     if (unlikely(__pyx_v_food == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-      __PYX_ERR(0, 69, __pyx_L1_error)
+      __PYX_ERR(0, 71, __pyx_L1_error)
     }
-    __pyx_t_1 = __pyx_v_food; __Pyx_INCREF(__pyx_t_1); __pyx_t_8 = 0;
+    __pyx_t_1 = __pyx_v_food; __Pyx_INCREF(__pyx_t_1); __pyx_t_7 = 0;
     for (;;) {
-      if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_1)) break;
+      if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_1)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_8); __Pyx_INCREF(__pyx_t_2); __pyx_t_8++; if (unlikely(0 < 0)) __PYX_ERR(0, 69, __pyx_L1_error)
+      __pyx_t_2 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_7); __Pyx_INCREF(__pyx_t_2); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
       #else
-      __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 69, __pyx_L1_error)
+      __pyx_t_2 = PySequence_ITEM(__pyx_t_1, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_aa, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "agent.pyx":70
+      /* "agent.pyx":72
  *             min_agent = None
  *             for aa in food:
  *                 a = <Agent?>aa             # <<<<<<<<<<<<<<
  *                 if a is not self and a.is_alive:
  *                     squared_dist = (self.x - a.x) ** 2 + (self.y - a.y) ** 2
  */
-      if (!(likely(__Pyx_TypeTest(__pyx_v_aa, __pyx_ptype_5agent_Agent)))) __PYX_ERR(0, 70, __pyx_L1_error)
+      if (!(likely(__Pyx_TypeTest(__pyx_v_aa, __pyx_ptype_5agent_Agent)))) __PYX_ERR(0, 72, __pyx_L1_error)
       __pyx_t_2 = __pyx_v_aa;
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_XDECREF_SET(__pyx_v_a, ((struct __pyx_obj_5agent_Agent *)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "agent.pyx":71
+      /* "agent.pyx":73
  *             for aa in food:
  *                 a = <Agent?>aa
  *                 if a is not self and a.is_alive:             # <<<<<<<<<<<<<<
@@ -2423,21 +2422,18 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  *                     if squared_dist < min_dist:
  */
       __pyx_t_5 = (__pyx_v_a != __pyx_v_self);
-      __pyx_t_6 = (__pyx_t_5 != 0);
-      if (__pyx_t_6) {
+      __pyx_t_8 = (__pyx_t_5 != 0);
+      if (__pyx_t_8) {
       } else {
-        __pyx_t_7 = __pyx_t_6;
+        __pyx_t_6 = __pyx_t_8;
         goto __pyx_L13_bool_binop_done;
       }
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_a), __pyx_n_s_is_alive); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_7 = __pyx_t_6;
+      __pyx_t_8 = (__pyx_v_a->is_alive != 0);
+      __pyx_t_6 = __pyx_t_8;
       __pyx_L13_bool_binop_done:;
-      if (__pyx_t_7) {
+      if (__pyx_t_6) {
 
-        /* "agent.pyx":72
+        /* "agent.pyx":74
  *                 a = <Agent?>aa
  *                 if a is not self and a.is_alive:
  *                     squared_dist = (self.x - a.x) ** 2 + (self.y - a.y) ** 2             # <<<<<<<<<<<<<<
@@ -2446,17 +2442,17 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
         __pyx_v_squared_dist = (pow((__pyx_v_self->x - __pyx_v_a->x), 2.0) + pow((__pyx_v_self->y - __pyx_v_a->y), 2.0));
 
-        /* "agent.pyx":73
+        /* "agent.pyx":75
  *                 if a is not self and a.is_alive:
  *                     squared_dist = (self.x - a.x) ** 2 + (self.y - a.y) ** 2
  *                     if squared_dist < min_dist:             # <<<<<<<<<<<<<<
  *                         min_dist = squared_dist
  *                         min_agent = a
  */
-        __pyx_t_7 = ((__pyx_v_squared_dist < __pyx_v_min_dist) != 0);
-        if (__pyx_t_7) {
+        __pyx_t_6 = ((__pyx_v_squared_dist < __pyx_v_min_dist) != 0);
+        if (__pyx_t_6) {
 
-          /* "agent.pyx":74
+          /* "agent.pyx":76
  *                     squared_dist = (self.x - a.x) ** 2 + (self.y - a.y) ** 2
  *                     if squared_dist < min_dist:
  *                         min_dist = squared_dist             # <<<<<<<<<<<<<<
@@ -2465,7 +2461,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
           __pyx_v_min_dist = __pyx_v_squared_dist;
 
-          /* "agent.pyx":75
+          /* "agent.pyx":77
  *                     if squared_dist < min_dist:
  *                         min_dist = squared_dist
  *                         min_agent = a             # <<<<<<<<<<<<<<
@@ -2475,7 +2471,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
           __Pyx_INCREF(((PyObject *)__pyx_v_a));
           __Pyx_DECREF_SET(__pyx_v_min_agent, __pyx_v_a);
 
-          /* "agent.pyx":73
+          /* "agent.pyx":75
  *                 if a is not self and a.is_alive:
  *                     squared_dist = (self.x - a.x) ** 2 + (self.y - a.y) ** 2
  *                     if squared_dist < min_dist:             # <<<<<<<<<<<<<<
@@ -2484,7 +2480,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
         }
 
-        /* "agent.pyx":71
+        /* "agent.pyx":73
  *             for aa in food:
  *                 a = <Agent?>aa
  *                 if a is not self and a.is_alive:             # <<<<<<<<<<<<<<
@@ -2493,7 +2489,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
       }
 
-      /* "agent.pyx":69
+      /* "agent.pyx":71
  *             min_dist = 9999999
  *             min_agent = None
  *             for aa in food:             # <<<<<<<<<<<<<<
@@ -2503,17 +2499,17 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "agent.pyx":76
+    /* "agent.pyx":78
  *                         min_dist = squared_dist
  *                         min_agent = a
  *             if min_dist < 100000:             # <<<<<<<<<<<<<<
  *                 self.target = min_agent
  * 
  */
-    __pyx_t_7 = ((__pyx_v_min_dist < 100000.0) != 0);
-    if (__pyx_t_7) {
+    __pyx_t_6 = ((__pyx_v_min_dist < 100000.0) != 0);
+    if (__pyx_t_6) {
 
-      /* "agent.pyx":77
+      /* "agent.pyx":79
  *                         min_agent = a
  *             if min_dist < 100000:
  *                 self.target = min_agent             # <<<<<<<<<<<<<<
@@ -2526,7 +2522,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
       __Pyx_DECREF(((PyObject *)__pyx_v_self->target));
       __pyx_v_self->target = __pyx_v_min_agent;
 
-      /* "agent.pyx":76
+      /* "agent.pyx":78
  *                         min_dist = squared_dist
  *                         min_agent = a
  *             if min_dist < 100000:             # <<<<<<<<<<<<<<
@@ -2535,7 +2531,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
     }
 
-    /* "agent.pyx":66
+    /* "agent.pyx":68
  * 
  *         # agent doesn't have a target, find a new one
  *         if not self.target:             # <<<<<<<<<<<<<<
@@ -2544,7 +2540,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   }
 
-  /* "agent.pyx":80
+  /* "agent.pyx":82
  * 
  *         # initalize 'forces' to zero
  *         fx = 0             # <<<<<<<<<<<<<<
@@ -2553,7 +2549,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   __pyx_v_fx = 0.0;
 
-  /* "agent.pyx":81
+  /* "agent.pyx":83
  *         # initalize 'forces' to zero
  *         fx = 0
  *         fy = 0             # <<<<<<<<<<<<<<
@@ -2562,17 +2558,17 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   __pyx_v_fy = 0.0;
 
-  /* "agent.pyx":84
+  /* "agent.pyx":86
  * 
  *         # move in the direction of the target, if any
  *         if self.target:             # <<<<<<<<<<<<<<
  *             fx += 0.1*(self.target.x - self.x)
  *             fy += 0.1*(self.target.y - self.y)
  */
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->target)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
-  if (__pyx_t_7) {
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(((PyObject *)__pyx_v_self->target)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
+  if (__pyx_t_6) {
 
-    /* "agent.pyx":85
+    /* "agent.pyx":87
  *         # move in the direction of the target, if any
  *         if self.target:
  *             fx += 0.1*(self.target.x - self.x)             # <<<<<<<<<<<<<<
@@ -2581,7 +2577,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
     __pyx_v_fx = (__pyx_v_fx + (0.1 * (__pyx_v_self->target->x - __pyx_v_self->x)));
 
-    /* "agent.pyx":86
+    /* "agent.pyx":88
  *         if self.target:
  *             fx += 0.1*(self.target.x - self.x)
  *             fy += 0.1*(self.target.y - self.y)             # <<<<<<<<<<<<<<
@@ -2590,7 +2586,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
     __pyx_v_fy = (__pyx_v_fy + (0.1 * (__pyx_v_self->target->y - __pyx_v_self->y)));
 
-    /* "agent.pyx":84
+    /* "agent.pyx":86
  * 
  *         # move in the direction of the target, if any
  *         if self.target:             # <<<<<<<<<<<<<<
@@ -2599,7 +2595,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   }
 
-  /* "agent.pyx":89
+  /* "agent.pyx":91
  * 
  *         # update our direction based on the 'force'
  *         self.dx = self.dx + 0.05 * fx             # <<<<<<<<<<<<<<
@@ -2608,7 +2604,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   __pyx_v_self->dx = (__pyx_v_self->dx + (0.05 * __pyx_v_fx));
 
-  /* "agent.pyx":90
+  /* "agent.pyx":92
  *         # update our direction based on the 'force'
  *         self.dx = self.dx + 0.05 * fx
  *         self.dy = self.dy + 0.05 * fy             # <<<<<<<<<<<<<<
@@ -2617,19 +2613,19 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   __pyx_v_self->dy = (__pyx_v_self->dy + (0.05 * __pyx_v_fy));
 
-  /* "agent.pyx":93
+  /* "agent.pyx":95
  * 
  *         # slow down agent if it moves faster than it max velocity
  *         velocity = math.sqrt(self.dx ** 2 + self.dy ** 2)             # <<<<<<<<<<<<<<
  *         if velocity > self.vmax:
  *             self.dx = (self.dx / velocity) * (self.vmax)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_math); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_math); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_sqrt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyFloat_FromDouble((pow(__pyx_v_self->dx, 2.0) + pow(__pyx_v_self->dy, 2.0))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble((pow(__pyx_v_self->dx, 2.0) + pow(__pyx_v_self->dy, 2.0))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -2644,72 +2640,72 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_velocity = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "agent.pyx":94
+  /* "agent.pyx":96
  *         # slow down agent if it moves faster than it max velocity
  *         velocity = math.sqrt(self.dx ** 2 + self.dy ** 2)
  *         if velocity > self.vmax:             # <<<<<<<<<<<<<<
  *             self.dx = (self.dx / velocity) * (self.vmax)
  *             self.dy = (self.dy / velocity) * (self.vmax)
  */
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->vmax); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_self->vmax); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_v_velocity, __pyx_t_1, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_v_velocity, __pyx_t_1, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (__pyx_t_7) {
+  if (__pyx_t_6) {
 
-    /* "agent.pyx":95
+    /* "agent.pyx":97
  *         velocity = math.sqrt(self.dx ** 2 + self.dy ** 2)
  *         if velocity > self.vmax:
  *             self.dx = (self.dx / velocity) * (self.vmax)             # <<<<<<<<<<<<<<
  *             self.dy = (self.dy / velocity) * (self.vmax)
  * 
  */
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->dx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->dx); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_v_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_3, __pyx_v_velocity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->vmax); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_3 = PyFloat_FromDouble(__pyx_v_self->vmax); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Multiply(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_self->dx = __pyx_t_9;
 
-    /* "agent.pyx":96
+    /* "agent.pyx":98
  *         if velocity > self.vmax:
  *             self.dx = (self.dx / velocity) * (self.vmax)
  *             self.dy = (self.dy / velocity) * (self.vmax)             # <<<<<<<<<<<<<<
  * 
  *         # update position based on delta x/y
  */
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->dy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->dy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_v_velocity); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_t_2, __pyx_v_velocity); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->vmax); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_2 = PyFloat_FromDouble(__pyx_v_self->vmax); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_v_self->dy = __pyx_t_9;
 
-    /* "agent.pyx":94
+    /* "agent.pyx":96
  *         # slow down agent if it moves faster than it max velocity
  *         velocity = math.sqrt(self.dx ** 2 + self.dy ** 2)
  *         if velocity > self.vmax:             # <<<<<<<<<<<<<<
@@ -2718,7 +2714,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   }
 
-  /* "agent.pyx":99
+  /* "agent.pyx":101
  * 
  *         # update position based on delta x/y
  *         self.x = self.x + self.dx             # <<<<<<<<<<<<<<
@@ -2727,7 +2723,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   __pyx_v_self->x = (__pyx_v_self->x + __pyx_v_self->dx);
 
-  /* "agent.pyx":100
+  /* "agent.pyx":102
  *         # update position based on delta x/y
  *         self.x = self.x + self.dx
  *         self.y = self.y + self.dy             # <<<<<<<<<<<<<<
@@ -2736,7 +2732,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
  */
   __pyx_v_self->y = (__pyx_v_self->y + __pyx_v_self->dy);
 
-  /* "agent.pyx":103
+  /* "agent.pyx":105
  * 
  *         # ensure it stays within the world boundaries
  *         self.x = max(self.x, 0)             # <<<<<<<<<<<<<<
@@ -2752,7 +2748,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
   }
   __pyx_v_self->x = __pyx_t_11;
 
-  /* "agent.pyx":104
+  /* "agent.pyx":106
  *         # ensure it stays within the world boundaries
  *         self.x = max(self.x, 0)
  *         self.x = min(self.x, self.world_width)             # <<<<<<<<<<<<<<
@@ -2768,7 +2764,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
   }
   __pyx_v_self->x = __pyx_t_12;
 
-  /* "agent.pyx":105
+  /* "agent.pyx":107
  *         self.x = max(self.x, 0)
  *         self.x = min(self.x, self.world_width)
  *         self.y = max(self.y, 0)             # <<<<<<<<<<<<<<
@@ -2784,7 +2780,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
   }
   __pyx_v_self->y = __pyx_t_11;
 
-  /* "agent.pyx":106
+  /* "agent.pyx":108
  *         self.x = min(self.x, self.world_width)
  *         self.y = max(self.y, 0)
  *         self.y = min(self.y, self.world_height)             # <<<<<<<<<<<<<<
@@ -2800,7 +2796,7 @@ static void __pyx_f_5agent_5Agent_update(struct __pyx_obj_5agent_Agent *__pyx_v_
   }
   __pyx_v_self->y = __pyx_t_9;
 
-  /* "agent.pyx":41
+  /* "agent.pyx":43
  *         self.energy = 0
  * 
  *     cpdef void update(self, list food) except *:             # <<<<<<<<<<<<<<
@@ -2833,7 +2829,7 @@ static PyObject *__pyx_pw_5agent_5Agent_3update(PyObject *__pyx_v_self, PyObject
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("update (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_food), (&PyList_Type), 1, "food", 1))) __PYX_ERR(0, 41, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_food), (&PyList_Type), 1, "food", 1))) __PYX_ERR(0, 43, __pyx_L1_error)
   __pyx_r = __pyx_pf_5agent_5Agent_2update(((struct __pyx_obj_5agent_Agent *)__pyx_v_self), ((PyObject*)__pyx_v_food));
 
   /* function exit code */
@@ -2854,8 +2850,8 @@ static PyObject *__pyx_pf_5agent_5Agent_2update(struct __pyx_obj_5agent_Agent *_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("update", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5agent_5Agent_update(__pyx_v_self, __pyx_v_food, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_f_5agent_5Agent_update(__pyx_v_self, __pyx_v_food, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3053,7 +3049,7 @@ static int __pyx_pf_5agent_5Agent_4vmax_2__set__(struct __pyx_obj_5agent_Agent *
  *     cdef public double vmax
  *     cdef public int age             # <<<<<<<<<<<<<<
  *     cdef public int energy
- *     cdef Agent target
+ *     cdef public bint is_alive
  */
 
 /* Python wrapper */
@@ -3134,7 +3130,7 @@ static int __pyx_pf_5agent_5Agent_3age_2__set__(struct __pyx_obj_5agent_Agent *_
  *     cdef public double vmax
  *     cdef public int age
  *     cdef public int energy             # <<<<<<<<<<<<<<
- *     cdef Agent target
+ *     cdef public bint is_alive
  * 
  */
 
@@ -3212,6 +3208,88 @@ static int __pyx_pf_5agent_5Agent_6energy_2__set__(struct __pyx_obj_5agent_Agent
   return __pyx_r;
 }
 
+/* "agent.pyx":18
+ *     cdef public int age
+ *     cdef public int energy
+ *     cdef public bint is_alive             # <<<<<<<<<<<<<<
+ * 
+ *     cdef Agent target
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_5agent_5Agent_8is_alive_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_5agent_5Agent_8is_alive_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_5agent_5Agent_8is_alive___get__(((struct __pyx_obj_5agent_Agent *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_5agent_5Agent_8is_alive___get__(struct __pyx_obj_5agent_Agent *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_v_self->is_alive); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("agent.Agent.is_alive.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static int __pyx_pw_5agent_5Agent_8is_alive_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_5agent_5Agent_8is_alive_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_5agent_5Agent_8is_alive_2__set__(((struct __pyx_obj_5agent_Agent *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_5agent_5Agent_8is_alive_2__set__(struct __pyx_obj_5agent_Agent *__pyx_v_self, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__set__", 0);
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_v_self->is_alive = __pyx_t_1;
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("agent.Agent.is_alive.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
 /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
  *     cdef tuple state
@@ -3247,8 +3325,9 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
   PyObject *__pyx_t_8 = NULL;
   PyObject *__pyx_t_9 = NULL;
   PyObject *__pyx_t_10 = NULL;
-  int __pyx_t_11;
+  PyObject *__pyx_t_11 = NULL;
   int __pyx_t_12;
+  int __pyx_t_13;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3257,7 +3336,7 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
   /* "(tree fragment)":5
  *     cdef object _dict
  *     cdef bint use_setstate
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)             # <<<<<<<<<<<<<<
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)             # <<<<<<<<<<<<<<
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:
  */
@@ -3269,39 +3348,43 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->energy); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->vmax); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_v_self->is_alive); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->world_height); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->vmax); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->world_width); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->world_height); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->x); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->world_width); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->y); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->x); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = PyTuple_New(10); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_10 = PyFloat_FromDouble(__pyx_v_self->y); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_11 = PyTuple_New(11); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_11, 4, __pyx_t_5);
   __Pyx_INCREF(((PyObject *)__pyx_v_self->target));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self->target));
-  PyTuple_SET_ITEM(__pyx_t_10, 4, ((PyObject *)__pyx_v_self->target));
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_10, 5, __pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_11, 5, ((PyObject *)__pyx_v_self->target));
   __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_10, 6, __pyx_t_6);
+  PyTuple_SET_ITEM(__pyx_t_11, 6, __pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_7);
-  PyTuple_SET_ITEM(__pyx_t_10, 7, __pyx_t_7);
+  PyTuple_SET_ITEM(__pyx_t_11, 7, __pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_8);
-  PyTuple_SET_ITEM(__pyx_t_10, 8, __pyx_t_8);
+  PyTuple_SET_ITEM(__pyx_t_11, 8, __pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_9);
-  PyTuple_SET_ITEM(__pyx_t_10, 9, __pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_11, 9, __pyx_t_9);
+  __Pyx_GIVEREF(__pyx_t_10);
+  PyTuple_SET_ITEM(__pyx_t_11, 10, __pyx_t_10);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
@@ -3311,31 +3394,32 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
   __pyx_t_7 = 0;
   __pyx_t_8 = 0;
   __pyx_t_9 = 0;
-  __pyx_v_state = ((PyObject*)__pyx_t_10);
   __pyx_t_10 = 0;
+  __pyx_v_state = ((PyObject*)__pyx_t_11);
+  __pyx_t_11 = 0;
 
   /* "(tree fragment)":6
  *     cdef bint use_setstate
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
  *     if _dict is not None:
  *         state += (_dict,)
  */
-  __pyx_t_10 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 6, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_v__dict = __pyx_t_10;
-  __pyx_t_10 = 0;
+  __pyx_t_11 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
+  __pyx_v__dict = __pyx_t_11;
+  __pyx_t_11 = 0;
 
   /* "(tree fragment)":7
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
  *         use_setstate = True
  */
-  __pyx_t_11 = (__pyx_v__dict != Py_None);
-  __pyx_t_12 = (__pyx_t_11 != 0);
-  if (__pyx_t_12) {
+  __pyx_t_12 = (__pyx_v__dict != Py_None);
+  __pyx_t_13 = (__pyx_t_12 != 0);
+  if (__pyx_t_13) {
 
     /* "(tree fragment)":8
  *     _dict = getattr(self, '__dict__', None)
@@ -3344,16 +3428,16 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
  *         use_setstate = True
  *     else:
  */
-    __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(__pyx_v__dict);
     __Pyx_GIVEREF(__pyx_v__dict);
-    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_v__dict);
-    __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_9));
-    __pyx_t_9 = 0;
+    PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_v__dict);
+    __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_10));
+    __pyx_t_10 = 0;
 
     /* "(tree fragment)":9
  *     if _dict is not None:
@@ -3365,7 +3449,7 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
     __pyx_v_use_setstate = 1;
 
     /* "(tree fragment)":7
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -3379,11 +3463,11 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
  *     else:
  *         use_setstate = self.target is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, None), state
  */
   /*else*/ {
-    __pyx_t_12 = (((PyObject *)__pyx_v_self->target) != Py_None);
-    __pyx_v_use_setstate = __pyx_t_12;
+    __pyx_t_13 = (((PyObject *)__pyx_v_self->target) != Py_None);
+    __pyx_v_use_setstate = __pyx_t_13;
   }
   __pyx_L3:;
 
@@ -3391,89 +3475,89 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
  *     else:
  *         use_setstate = self.target is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, None), state
  *     else:
  */
-  __pyx_t_12 = (__pyx_v_use_setstate != 0);
-  if (__pyx_t_12) {
+  __pyx_t_13 = (__pyx_v_use_setstate != 0);
+  if (__pyx_t_13) {
 
     /* "(tree fragment)":13
  *         use_setstate = self.target is not None
  *     if use_setstate:
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, None), state             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, None), state             # <<<<<<<<<<<<<<
  *     else:
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, state)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_pyx_unpickle_Agent); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_pyx_unpickle_Agent); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 13, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_213349252);
-    __Pyx_GIVEREF(__pyx_int_213349252);
-    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_213349252);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_12639386);
+    __Pyx_GIVEREF(__pyx_int_12639386);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_12639386);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
-    PyTuple_SET_ITEM(__pyx_t_10, 2, Py_None);
-    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_GIVEREF(__pyx_t_9);
-    PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9);
+    PyTuple_SET_ITEM(__pyx_t_11, 2, Py_None);
+    __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_10);
+    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_11);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_v_state);
-    __pyx_t_9 = 0;
+    PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_v_state);
     __pyx_t_10 = 0;
-    __pyx_r = __pyx_t_8;
-    __pyx_t_8 = 0;
+    __pyx_t_11 = 0;
+    __pyx_r = __pyx_t_9;
+    __pyx_t_9 = 0;
     goto __pyx_L0;
 
     /* "(tree fragment)":12
  *     else:
  *         use_setstate = self.target is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, None), state
  *     else:
  */
   }
 
   /* "(tree fragment)":15
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, None), state
  *     else:
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, state)             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, state)             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_Agent__set_state(self, __pyx_state)
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_pyx_unpickle_Agent); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_pyx_unpickle_Agent); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_213349252);
-    __Pyx_GIVEREF(__pyx_int_213349252);
-    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_213349252);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_12639386);
+    __Pyx_GIVEREF(__pyx_int_12639386);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_12639386);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_v_state);
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_GIVEREF(__pyx_t_8);
-    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8);
-    __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_10);
-    __pyx_t_8 = 0;
-    __pyx_t_10 = 0;
-    __pyx_r = __pyx_t_9;
+    PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_v_state);
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_9);
+    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_11);
     __pyx_t_9 = 0;
+    __pyx_t_11 = 0;
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
   }
 
@@ -3495,6 +3579,7 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
   __Pyx_AddTraceback("agent.Agent.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3507,7 +3592,7 @@ static PyObject *__pyx_pf_5agent_5Agent_4__reduce_cython__(struct __pyx_obj_5age
 
 /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Agent__set_state(self, __pyx_state)
  */
@@ -3535,7 +3620,7 @@ static PyObject *__pyx_pf_5agent_5Agent_6__setstate_cython__(struct __pyx_obj_5a
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":17
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_Agent__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
  */
@@ -3546,7 +3631,7 @@ static PyObject *__pyx_pf_5agent_5Agent_6__setstate_cython__(struct __pyx_obj_5a
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_Agent, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Agent, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Agent__set_state(self, __pyx_state)
  */
@@ -3564,7 +3649,7 @@ static PyObject *__pyx_pf_5agent_5Agent_6__setstate_cython__(struct __pyx_obj_5a
   return __pyx_r;
 }
 
-/* "agent.pyx":110
+/* "agent.pyx":112
  * 
  * cdef class Predator(Agent):
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -3603,14 +3688,14 @@ static int __pyx_pf_5agent_8Predator___init__(struct __pyx_obj_5agent_Predator *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "agent.pyx":111
+  /* "agent.pyx":113
  * cdef class Predator(Agent):
  *     def __init__(self, **kwargs):
  *         super().__init__(**kwargs)             # <<<<<<<<<<<<<<
  *         self.vmax = 2.5
  * 
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_ptype_5agent_Predator));
   __Pyx_GIVEREF(((PyObject *)__pyx_ptype_5agent_Predator));
@@ -3618,21 +3703,21 @@ static int __pyx_pf_5agent_8Predator___init__(struct __pyx_obj_5agent_Predator *
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_1, 1, ((PyObject *)__pyx_v_self));
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_2 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "agent.pyx":112
+  /* "agent.pyx":114
  *     def __init__(self, **kwargs):
  *         super().__init__(**kwargs)
  *         self.vmax = 2.5             # <<<<<<<<<<<<<<
@@ -3641,7 +3726,7 @@ static int __pyx_pf_5agent_8Predator___init__(struct __pyx_obj_5agent_Predator *
  */
   __pyx_v_self->__pyx_base.vmax = 2.5;
 
-  /* "agent.pyx":110
+  /* "agent.pyx":112
  * 
  * cdef class Predator(Agent):
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -3698,8 +3783,9 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
   PyObject *__pyx_t_8 = NULL;
   PyObject *__pyx_t_9 = NULL;
   PyObject *__pyx_t_10 = NULL;
-  int __pyx_t_11;
+  PyObject *__pyx_t_11 = NULL;
   int __pyx_t_12;
+  int __pyx_t_13;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3708,7 +3794,7 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
   /* "(tree fragment)":5
  *     cdef object _dict
  *     cdef bint use_setstate
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)             # <<<<<<<<<<<<<<
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)             # <<<<<<<<<<<<<<
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:
  */
@@ -3720,39 +3806,43 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->__pyx_base.energy); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.vmax); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_v_self->__pyx_base.is_alive); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_height); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.vmax); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_width); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_height); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.x); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_width); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.y); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.x); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = PyTuple_New(10); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_10 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.y); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_11 = PyTuple_New(11); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_11, 4, __pyx_t_5);
   __Pyx_INCREF(((PyObject *)__pyx_v_self->__pyx_base.target));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self->__pyx_base.target));
-  PyTuple_SET_ITEM(__pyx_t_10, 4, ((PyObject *)__pyx_v_self->__pyx_base.target));
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_10, 5, __pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_11, 5, ((PyObject *)__pyx_v_self->__pyx_base.target));
   __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_10, 6, __pyx_t_6);
+  PyTuple_SET_ITEM(__pyx_t_11, 6, __pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_7);
-  PyTuple_SET_ITEM(__pyx_t_10, 7, __pyx_t_7);
+  PyTuple_SET_ITEM(__pyx_t_11, 7, __pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_8);
-  PyTuple_SET_ITEM(__pyx_t_10, 8, __pyx_t_8);
+  PyTuple_SET_ITEM(__pyx_t_11, 8, __pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_9);
-  PyTuple_SET_ITEM(__pyx_t_10, 9, __pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_11, 9, __pyx_t_9);
+  __Pyx_GIVEREF(__pyx_t_10);
+  PyTuple_SET_ITEM(__pyx_t_11, 10, __pyx_t_10);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
@@ -3762,31 +3852,32 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
   __pyx_t_7 = 0;
   __pyx_t_8 = 0;
   __pyx_t_9 = 0;
-  __pyx_v_state = ((PyObject*)__pyx_t_10);
   __pyx_t_10 = 0;
+  __pyx_v_state = ((PyObject*)__pyx_t_11);
+  __pyx_t_11 = 0;
 
   /* "(tree fragment)":6
  *     cdef bint use_setstate
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
  *     if _dict is not None:
  *         state += (_dict,)
  */
-  __pyx_t_10 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 6, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_v__dict = __pyx_t_10;
-  __pyx_t_10 = 0;
+  __pyx_t_11 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
+  __pyx_v__dict = __pyx_t_11;
+  __pyx_t_11 = 0;
 
   /* "(tree fragment)":7
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
  *         use_setstate = True
  */
-  __pyx_t_11 = (__pyx_v__dict != Py_None);
-  __pyx_t_12 = (__pyx_t_11 != 0);
-  if (__pyx_t_12) {
+  __pyx_t_12 = (__pyx_v__dict != Py_None);
+  __pyx_t_13 = (__pyx_t_12 != 0);
+  if (__pyx_t_13) {
 
     /* "(tree fragment)":8
  *     _dict = getattr(self, '__dict__', None)
@@ -3795,16 +3886,16 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
  *         use_setstate = True
  *     else:
  */
-    __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(__pyx_v__dict);
     __Pyx_GIVEREF(__pyx_v__dict);
-    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_v__dict);
-    __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_9));
-    __pyx_t_9 = 0;
+    PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_v__dict);
+    __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_10));
+    __pyx_t_10 = 0;
 
     /* "(tree fragment)":9
  *     if _dict is not None:
@@ -3816,7 +3907,7 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
     __pyx_v_use_setstate = 1;
 
     /* "(tree fragment)":7
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -3830,11 +3921,11 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
  *     else:
  *         use_setstate = self.target is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, None), state
  */
   /*else*/ {
-    __pyx_t_12 = (((PyObject *)__pyx_v_self->__pyx_base.target) != Py_None);
-    __pyx_v_use_setstate = __pyx_t_12;
+    __pyx_t_13 = (((PyObject *)__pyx_v_self->__pyx_base.target) != Py_None);
+    __pyx_v_use_setstate = __pyx_t_13;
   }
   __pyx_L3:;
 
@@ -3842,89 +3933,89 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
  *     else:
  *         use_setstate = self.target is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, None), state
  *     else:
  */
-  __pyx_t_12 = (__pyx_v_use_setstate != 0);
-  if (__pyx_t_12) {
+  __pyx_t_13 = (__pyx_v_use_setstate != 0);
+  if (__pyx_t_13) {
 
     /* "(tree fragment)":13
  *         use_setstate = self.target is not None
  *     if use_setstate:
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, None), state             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, None), state             # <<<<<<<<<<<<<<
  *     else:
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, state)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_pyx_unpickle_Predator); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_pyx_unpickle_Predator); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 13, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_213349252);
-    __Pyx_GIVEREF(__pyx_int_213349252);
-    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_213349252);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_12639386);
+    __Pyx_GIVEREF(__pyx_int_12639386);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_12639386);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
-    PyTuple_SET_ITEM(__pyx_t_10, 2, Py_None);
-    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_GIVEREF(__pyx_t_9);
-    PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9);
+    PyTuple_SET_ITEM(__pyx_t_11, 2, Py_None);
+    __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_10);
+    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_11);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_v_state);
-    __pyx_t_9 = 0;
+    PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_v_state);
     __pyx_t_10 = 0;
-    __pyx_r = __pyx_t_8;
-    __pyx_t_8 = 0;
+    __pyx_t_11 = 0;
+    __pyx_r = __pyx_t_9;
+    __pyx_t_9 = 0;
     goto __pyx_L0;
 
     /* "(tree fragment)":12
  *     else:
  *         use_setstate = self.target is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, None), state
  *     else:
  */
   }
 
   /* "(tree fragment)":15
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, None), state
  *     else:
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, state)             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, state)             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_Predator__set_state(self, __pyx_state)
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_pyx_unpickle_Predator); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_pyx_unpickle_Predator); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_213349252);
-    __Pyx_GIVEREF(__pyx_int_213349252);
-    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_213349252);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_12639386);
+    __Pyx_GIVEREF(__pyx_int_12639386);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_12639386);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_v_state);
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_GIVEREF(__pyx_t_8);
-    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8);
-    __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_10);
-    __pyx_t_8 = 0;
-    __pyx_t_10 = 0;
-    __pyx_r = __pyx_t_9;
+    PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_v_state);
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_9);
+    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_11);
     __pyx_t_9 = 0;
+    __pyx_t_11 = 0;
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
   }
 
@@ -3946,6 +4037,7 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
   __Pyx_AddTraceback("agent.Predator.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3958,7 +4050,7 @@ static PyObject *__pyx_pf_5agent_8Predator_2__reduce_cython__(struct __pyx_obj_5
 
 /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Predator__set_state(self, __pyx_state)
  */
@@ -3986,7 +4078,7 @@ static PyObject *__pyx_pf_5agent_8Predator_4__setstate_cython__(struct __pyx_obj
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":17
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_Predator__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
  */
@@ -3997,7 +4089,7 @@ static PyObject *__pyx_pf_5agent_8Predator_4__setstate_cython__(struct __pyx_obj
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_Predator, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Predator, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Predator__set_state(self, __pyx_state)
  */
@@ -4015,7 +4107,7 @@ static PyObject *__pyx_pf_5agent_8Predator_4__setstate_cython__(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "agent.pyx":115
+/* "agent.pyx":117
  * 
  * cdef class Prey(Agent):
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -4054,14 +4146,14 @@ static int __pyx_pf_5agent_4Prey___init__(struct __pyx_obj_5agent_Prey *__pyx_v_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "agent.pyx":116
+  /* "agent.pyx":118
  * cdef class Prey(Agent):
  *     def __init__(self, **kwargs):
  *         super().__init__(**kwargs)             # <<<<<<<<<<<<<<
  *         self.vmax = 2.0
  * 
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_ptype_5agent_Prey));
   __Pyx_GIVEREF(((PyObject *)__pyx_ptype_5agent_Prey));
@@ -4069,21 +4161,21 @@ static int __pyx_pf_5agent_4Prey___init__(struct __pyx_obj_5agent_Prey *__pyx_v_
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_1, 1, ((PyObject *)__pyx_v_self));
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_2 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "agent.pyx":117
+  /* "agent.pyx":119
  *     def __init__(self, **kwargs):
  *         super().__init__(**kwargs)
  *         self.vmax = 2.0             # <<<<<<<<<<<<<<
@@ -4092,7 +4184,7 @@ static int __pyx_pf_5agent_4Prey___init__(struct __pyx_obj_5agent_Prey *__pyx_v_
  */
   __pyx_v_self->__pyx_base.vmax = 2.0;
 
-  /* "agent.pyx":115
+  /* "agent.pyx":117
  * 
  * cdef class Prey(Agent):
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -4149,8 +4241,9 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
   PyObject *__pyx_t_8 = NULL;
   PyObject *__pyx_t_9 = NULL;
   PyObject *__pyx_t_10 = NULL;
-  int __pyx_t_11;
+  PyObject *__pyx_t_11 = NULL;
   int __pyx_t_12;
+  int __pyx_t_13;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4159,7 +4252,7 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
   /* "(tree fragment)":5
  *     cdef object _dict
  *     cdef bint use_setstate
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)             # <<<<<<<<<<<<<<
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)             # <<<<<<<<<<<<<<
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:
  */
@@ -4171,39 +4264,43 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->__pyx_base.energy); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.vmax); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_v_self->__pyx_base.is_alive); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_height); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.vmax); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_width); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_height); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.x); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_width); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.y); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.x); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = PyTuple_New(10); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_10 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.y); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_11 = PyTuple_New(11); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_11, 4, __pyx_t_5);
   __Pyx_INCREF(((PyObject *)__pyx_v_self->__pyx_base.target));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self->__pyx_base.target));
-  PyTuple_SET_ITEM(__pyx_t_10, 4, ((PyObject *)__pyx_v_self->__pyx_base.target));
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_10, 5, __pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_11, 5, ((PyObject *)__pyx_v_self->__pyx_base.target));
   __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_10, 6, __pyx_t_6);
+  PyTuple_SET_ITEM(__pyx_t_11, 6, __pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_7);
-  PyTuple_SET_ITEM(__pyx_t_10, 7, __pyx_t_7);
+  PyTuple_SET_ITEM(__pyx_t_11, 7, __pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_8);
-  PyTuple_SET_ITEM(__pyx_t_10, 8, __pyx_t_8);
+  PyTuple_SET_ITEM(__pyx_t_11, 8, __pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_9);
-  PyTuple_SET_ITEM(__pyx_t_10, 9, __pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_11, 9, __pyx_t_9);
+  __Pyx_GIVEREF(__pyx_t_10);
+  PyTuple_SET_ITEM(__pyx_t_11, 10, __pyx_t_10);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
@@ -4213,31 +4310,32 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
   __pyx_t_7 = 0;
   __pyx_t_8 = 0;
   __pyx_t_9 = 0;
-  __pyx_v_state = ((PyObject*)__pyx_t_10);
   __pyx_t_10 = 0;
+  __pyx_v_state = ((PyObject*)__pyx_t_11);
+  __pyx_t_11 = 0;
 
   /* "(tree fragment)":6
  *     cdef bint use_setstate
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
  *     if _dict is not None:
  *         state += (_dict,)
  */
-  __pyx_t_10 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 6, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_v__dict = __pyx_t_10;
-  __pyx_t_10 = 0;
+  __pyx_t_11 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
+  __pyx_v__dict = __pyx_t_11;
+  __pyx_t_11 = 0;
 
   /* "(tree fragment)":7
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
  *         use_setstate = True
  */
-  __pyx_t_11 = (__pyx_v__dict != Py_None);
-  __pyx_t_12 = (__pyx_t_11 != 0);
-  if (__pyx_t_12) {
+  __pyx_t_12 = (__pyx_v__dict != Py_None);
+  __pyx_t_13 = (__pyx_t_12 != 0);
+  if (__pyx_t_13) {
 
     /* "(tree fragment)":8
  *     _dict = getattr(self, '__dict__', None)
@@ -4246,16 +4344,16 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
  *         use_setstate = True
  *     else:
  */
-    __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(__pyx_v__dict);
     __Pyx_GIVEREF(__pyx_v__dict);
-    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_v__dict);
-    __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_9));
-    __pyx_t_9 = 0;
+    PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_v__dict);
+    __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_10));
+    __pyx_t_10 = 0;
 
     /* "(tree fragment)":9
  *     if _dict is not None:
@@ -4267,7 +4365,7 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
     __pyx_v_use_setstate = 1;
 
     /* "(tree fragment)":7
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -4281,11 +4379,11 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
  *     else:
  *         use_setstate = self.target is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, None), state
  */
   /*else*/ {
-    __pyx_t_12 = (((PyObject *)__pyx_v_self->__pyx_base.target) != Py_None);
-    __pyx_v_use_setstate = __pyx_t_12;
+    __pyx_t_13 = (((PyObject *)__pyx_v_self->__pyx_base.target) != Py_None);
+    __pyx_v_use_setstate = __pyx_t_13;
   }
   __pyx_L3:;
 
@@ -4293,89 +4391,89 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
  *     else:
  *         use_setstate = self.target is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, None), state
  *     else:
  */
-  __pyx_t_12 = (__pyx_v_use_setstate != 0);
-  if (__pyx_t_12) {
+  __pyx_t_13 = (__pyx_v_use_setstate != 0);
+  if (__pyx_t_13) {
 
     /* "(tree fragment)":13
  *         use_setstate = self.target is not None
  *     if use_setstate:
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, None), state             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, None), state             # <<<<<<<<<<<<<<
  *     else:
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, state)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_pyx_unpickle_Prey); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_pyx_unpickle_Prey); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 13, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_213349252);
-    __Pyx_GIVEREF(__pyx_int_213349252);
-    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_213349252);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_12639386);
+    __Pyx_GIVEREF(__pyx_int_12639386);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_12639386);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
-    PyTuple_SET_ITEM(__pyx_t_10, 2, Py_None);
-    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_GIVEREF(__pyx_t_9);
-    PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9);
+    PyTuple_SET_ITEM(__pyx_t_11, 2, Py_None);
+    __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_10);
+    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_11);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_v_state);
-    __pyx_t_9 = 0;
+    PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_v_state);
     __pyx_t_10 = 0;
-    __pyx_r = __pyx_t_8;
-    __pyx_t_8 = 0;
+    __pyx_t_11 = 0;
+    __pyx_r = __pyx_t_9;
+    __pyx_t_9 = 0;
     goto __pyx_L0;
 
     /* "(tree fragment)":12
  *     else:
  *         use_setstate = self.target is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, None), state
  *     else:
  */
   }
 
   /* "(tree fragment)":15
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, None), state
  *     else:
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, state)             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, state)             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_Prey__set_state(self, __pyx_state)
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_pyx_unpickle_Prey); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_pyx_unpickle_Prey); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_213349252);
-    __Pyx_GIVEREF(__pyx_int_213349252);
-    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_213349252);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_12639386);
+    __Pyx_GIVEREF(__pyx_int_12639386);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_12639386);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_v_state);
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_GIVEREF(__pyx_t_8);
-    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8);
-    __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_10);
-    __pyx_t_8 = 0;
-    __pyx_t_10 = 0;
-    __pyx_r = __pyx_t_9;
+    PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_v_state);
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_9);
+    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_11);
     __pyx_t_9 = 0;
+    __pyx_t_11 = 0;
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
   }
 
@@ -4397,6 +4495,7 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
   __Pyx_AddTraceback("agent.Prey.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4409,7 +4508,7 @@ static PyObject *__pyx_pf_5agent_4Prey_2__reduce_cython__(struct __pyx_obj_5agen
 
 /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Prey__set_state(self, __pyx_state)
  */
@@ -4437,7 +4536,7 @@ static PyObject *__pyx_pf_5agent_4Prey_4__setstate_cython__(struct __pyx_obj_5ag
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":17
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_Prey__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
  */
@@ -4448,7 +4547,7 @@ static PyObject *__pyx_pf_5agent_4Prey_4__setstate_cython__(struct __pyx_obj_5ag
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_Prey, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Prey, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Prey__set_state(self, __pyx_state)
  */
@@ -4466,7 +4565,7 @@ static PyObject *__pyx_pf_5agent_4Prey_4__setstate_cython__(struct __pyx_obj_5ag
   return __pyx_r;
 }
 
-/* "agent.pyx":120
+/* "agent.pyx":122
  * 
  * cdef class Plant(Agent):
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -4505,14 +4604,14 @@ static int __pyx_pf_5agent_5Plant___init__(struct __pyx_obj_5agent_Plant *__pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "agent.pyx":121
+  /* "agent.pyx":123
  * cdef class Plant(Agent):
  *     def __init__(self, **kwargs):
  *         super().__init__(**kwargs)             # <<<<<<<<<<<<<<
  *         self.vmax = 0.0
  * 
  */
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_ptype_5agent_Plant));
   __Pyx_GIVEREF(((PyObject *)__pyx_ptype_5agent_Plant));
@@ -4520,21 +4619,21 @@ static int __pyx_pf_5agent_5Plant___init__(struct __pyx_obj_5agent_Plant *__pyx_
   __Pyx_INCREF(((PyObject *)__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_1, 1, ((PyObject *)__pyx_v_self));
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_super, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_init); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_2 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "agent.pyx":122
+  /* "agent.pyx":124
  *     def __init__(self, **kwargs):
  *         super().__init__(**kwargs)
  *         self.vmax = 0.0             # <<<<<<<<<<<<<<
@@ -4543,7 +4642,7 @@ static int __pyx_pf_5agent_5Plant___init__(struct __pyx_obj_5agent_Plant *__pyx_
  */
   __pyx_v_self->__pyx_base.vmax = 0.0;
 
-  /* "agent.pyx":120
+  /* "agent.pyx":122
  * 
  * cdef class Plant(Agent):
  *     def __init__(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -4600,8 +4699,9 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
   PyObject *__pyx_t_8 = NULL;
   PyObject *__pyx_t_9 = NULL;
   PyObject *__pyx_t_10 = NULL;
-  int __pyx_t_11;
+  PyObject *__pyx_t_11 = NULL;
   int __pyx_t_12;
+  int __pyx_t_13;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4610,7 +4710,7 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
   /* "(tree fragment)":5
  *     cdef object _dict
  *     cdef bint use_setstate
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)             # <<<<<<<<<<<<<<
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)             # <<<<<<<<<<<<<<
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:
  */
@@ -4622,39 +4722,43 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->__pyx_base.energy); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.vmax); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_v_self->__pyx_base.is_alive); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_height); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_6 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.vmax); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_width); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_7 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_height); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.x); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_8 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.world_width); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.y); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.x); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_10 = PyTuple_New(10); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __pyx_t_10 = PyFloat_FromDouble(__pyx_v_self->__pyx_base.y); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 5, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_11 = PyTuple_New(11); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 5, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_10, 3, __pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_11, 3, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_11, 4, __pyx_t_5);
   __Pyx_INCREF(((PyObject *)__pyx_v_self->__pyx_base.target));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_self->__pyx_base.target));
-  PyTuple_SET_ITEM(__pyx_t_10, 4, ((PyObject *)__pyx_v_self->__pyx_base.target));
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_10, 5, __pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_11, 5, ((PyObject *)__pyx_v_self->__pyx_base.target));
   __Pyx_GIVEREF(__pyx_t_6);
-  PyTuple_SET_ITEM(__pyx_t_10, 6, __pyx_t_6);
+  PyTuple_SET_ITEM(__pyx_t_11, 6, __pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_7);
-  PyTuple_SET_ITEM(__pyx_t_10, 7, __pyx_t_7);
+  PyTuple_SET_ITEM(__pyx_t_11, 7, __pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_8);
-  PyTuple_SET_ITEM(__pyx_t_10, 8, __pyx_t_8);
+  PyTuple_SET_ITEM(__pyx_t_11, 8, __pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_9);
-  PyTuple_SET_ITEM(__pyx_t_10, 9, __pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_11, 9, __pyx_t_9);
+  __Pyx_GIVEREF(__pyx_t_10);
+  PyTuple_SET_ITEM(__pyx_t_11, 10, __pyx_t_10);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
@@ -4664,31 +4768,32 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
   __pyx_t_7 = 0;
   __pyx_t_8 = 0;
   __pyx_t_9 = 0;
-  __pyx_v_state = ((PyObject*)__pyx_t_10);
   __pyx_t_10 = 0;
+  __pyx_v_state = ((PyObject*)__pyx_t_11);
+  __pyx_t_11 = 0;
 
   /* "(tree fragment)":6
  *     cdef bint use_setstate
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)             # <<<<<<<<<<<<<<
  *     if _dict is not None:
  *         state += (_dict,)
  */
-  __pyx_t_10 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 6, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_v__dict = __pyx_t_10;
-  __pyx_t_10 = 0;
+  __pyx_t_11 = __Pyx_GetAttr3(((PyObject *)__pyx_v_self), __pyx_n_s_dict, Py_None); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
+  __pyx_v__dict = __pyx_t_11;
+  __pyx_t_11 = 0;
 
   /* "(tree fragment)":7
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
  *         use_setstate = True
  */
-  __pyx_t_11 = (__pyx_v__dict != Py_None);
-  __pyx_t_12 = (__pyx_t_11 != 0);
-  if (__pyx_t_12) {
+  __pyx_t_12 = (__pyx_v__dict != Py_None);
+  __pyx_t_13 = (__pyx_t_12 != 0);
+  if (__pyx_t_13) {
 
     /* "(tree fragment)":8
  *     _dict = getattr(self, '__dict__', None)
@@ -4697,16 +4802,16 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
  *         use_setstate = True
  *     else:
  */
-    __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(__pyx_v__dict);
     __Pyx_GIVEREF(__pyx_v__dict);
-    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_v__dict);
-    __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_10); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 8, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_9));
-    __pyx_t_9 = 0;
+    PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_v__dict);
+    __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_v_state, __pyx_t_11); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 8, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    __Pyx_DECREF_SET(__pyx_v_state, ((PyObject*)__pyx_t_10));
+    __pyx_t_10 = 0;
 
     /* "(tree fragment)":9
  *     if _dict is not None:
@@ -4718,7 +4823,7 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
     __pyx_v_use_setstate = 1;
 
     /* "(tree fragment)":7
- *     state = (self.age, self.dx, self.dy, self.energy, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
+ *     state = (self.age, self.dx, self.dy, self.energy, self.is_alive, self.target, self.vmax, self.world_height, self.world_width, self.x, self.y)
  *     _dict = getattr(self, '__dict__', None)
  *     if _dict is not None:             # <<<<<<<<<<<<<<
  *         state += (_dict,)
@@ -4732,11 +4837,11 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
  *     else:
  *         use_setstate = self.target is not None             # <<<<<<<<<<<<<<
  *     if use_setstate:
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, None), state
  */
   /*else*/ {
-    __pyx_t_12 = (((PyObject *)__pyx_v_self->__pyx_base.target) != Py_None);
-    __pyx_v_use_setstate = __pyx_t_12;
+    __pyx_t_13 = (((PyObject *)__pyx_v_self->__pyx_base.target) != Py_None);
+    __pyx_v_use_setstate = __pyx_t_13;
   }
   __pyx_L3:;
 
@@ -4744,89 +4849,89 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
  *     else:
  *         use_setstate = self.target is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, None), state
  *     else:
  */
-  __pyx_t_12 = (__pyx_v_use_setstate != 0);
-  if (__pyx_t_12) {
+  __pyx_t_13 = (__pyx_v_use_setstate != 0);
+  if (__pyx_t_13) {
 
     /* "(tree fragment)":13
  *         use_setstate = self.target is not None
  *     if use_setstate:
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, None), state             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, None), state             # <<<<<<<<<<<<<<
  *     else:
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, state)
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_pyx_unpickle_Plant); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_pyx_unpickle_Plant); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 13, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_213349252);
-    __Pyx_GIVEREF(__pyx_int_213349252);
-    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_213349252);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_12639386);
+    __Pyx_GIVEREF(__pyx_int_12639386);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_12639386);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
-    PyTuple_SET_ITEM(__pyx_t_10, 2, Py_None);
-    __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 13, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_GIVEREF(__pyx_t_9);
-    PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9);
+    PyTuple_SET_ITEM(__pyx_t_11, 2, Py_None);
+    __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 13, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
     __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_10);
+    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_11);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_v_state);
-    __pyx_t_9 = 0;
+    PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_v_state);
     __pyx_t_10 = 0;
-    __pyx_r = __pyx_t_8;
-    __pyx_t_8 = 0;
+    __pyx_t_11 = 0;
+    __pyx_r = __pyx_t_9;
+    __pyx_t_9 = 0;
     goto __pyx_L0;
 
     /* "(tree fragment)":12
  *     else:
  *         use_setstate = self.target is not None
  *     if use_setstate:             # <<<<<<<<<<<<<<
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, None), state
  *     else:
  */
   }
 
   /* "(tree fragment)":15
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, None), state
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, None), state
  *     else:
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, state)             # <<<<<<<<<<<<<<
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, state)             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_Plant__set_state(self, __pyx_state)
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_pyx_unpickle_Plant); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_pyx_unpickle_Plant); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
     __Pyx_INCREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
     __Pyx_GIVEREF(((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    PyTuple_SET_ITEM(__pyx_t_10, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
-    __Pyx_INCREF(__pyx_int_213349252);
-    __Pyx_GIVEREF(__pyx_int_213349252);
-    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_213349252);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, ((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))));
+    __Pyx_INCREF(__pyx_int_12639386);
+    __Pyx_GIVEREF(__pyx_int_12639386);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_int_12639386);
     __Pyx_INCREF(__pyx_v_state);
     __Pyx_GIVEREF(__pyx_v_state);
-    PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_v_state);
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 15, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_GIVEREF(__pyx_t_8);
-    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8);
-    __Pyx_GIVEREF(__pyx_t_10);
-    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_10);
-    __pyx_t_8 = 0;
-    __pyx_t_10 = 0;
-    __pyx_r = __pyx_t_9;
+    PyTuple_SET_ITEM(__pyx_t_11, 2, __pyx_v_state);
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 15, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_9);
+    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_11);
     __pyx_t_9 = 0;
+    __pyx_t_11 = 0;
+    __pyx_r = __pyx_t_10;
+    __pyx_t_10 = 0;
     goto __pyx_L0;
   }
 
@@ -4848,6 +4953,7 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
   __Pyx_AddTraceback("agent.Plant.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4860,7 +4966,7 @@ static PyObject *__pyx_pf_5agent_5Plant_2__reduce_cython__(struct __pyx_obj_5age
 
 /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Plant__set_state(self, __pyx_state)
  */
@@ -4888,7 +4994,7 @@ static PyObject *__pyx_pf_5agent_5Plant_4__setstate_cython__(struct __pyx_obj_5a
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":17
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):
  *     __pyx_unpickle_Plant__set_state(self, __pyx_state)             # <<<<<<<<<<<<<<
  */
@@ -4899,7 +5005,7 @@ static PyObject *__pyx_pf_5agent_5Plant_4__setstate_cython__(struct __pyx_obj_5a
 
   /* "(tree fragment)":16
  *     else:
- *         return __pyx_unpickle_Plant, (type(self), 0xcb77384, state)
+ *         return __pyx_unpickle_Plant, (type(self), 0x0c0dc9a, state)
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
  *     __pyx_unpickle_Plant__set_state(self, __pyx_state)
  */
@@ -4917,7 +5023,7 @@ static PyObject *__pyx_pf_5agent_5Plant_4__setstate_cython__(struct __pyx_obj_5a
   return __pyx_r;
 }
 
-/* "agent.pyx":125
+/* "agent.pyx":127
  * 
  * 
  * cpdef void main(WORLD_WIDTH, WORLD_HEIGHT, TIMESTEPS) except *:             # <<<<<<<<<<<<<<
@@ -4932,9 +5038,9 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
   PyObject *__pyx_v_predators = 0;
   PyObject *__pyx_v_plants = 0;
   PyObject *__pyx_v_kwargs = 0;
+  PyObject *__pyx_v_a = NULL;
   PyObject *__pyx_v_p = NULL;
   CYTHON_UNUSED long __pyx_v_i;
-  PyObject *__pyx_v_a = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   long __pyx_t_2;
@@ -4943,8 +5049,8 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
   int __pyx_t_5;
   Py_ssize_t __pyx_t_6;
   PyObject *__pyx_t_7 = NULL;
-  PyObject *__pyx_t_8 = NULL;
-  int __pyx_t_9;
+  int __pyx_t_8;
+  PyObject *__pyx_t_9 = NULL;
   PyObject *__pyx_t_10 = NULL;
   int __pyx_t_11;
   int __pyx_lineno = 0;
@@ -4952,95 +5058,95 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 0);
 
-  /* "agent.pyx":138
+  /* "agent.pyx":140
  *     # create initial agents
  *     kwargs = dict(
  *         world_width=WORLD_WIDTH,             # <<<<<<<<<<<<<<
  *         world_height=WORLD_HEIGHT,
  *     )
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_world_width, __pyx_v_WORLD_WIDTH) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_world_width, __pyx_v_WORLD_WIDTH) < 0) __PYX_ERR(0, 140, __pyx_L1_error)
 
-  /* "agent.pyx":139
+  /* "agent.pyx":141
  *     kwargs = dict(
  *         world_width=WORLD_WIDTH,
  *         world_height=WORLD_HEIGHT,             # <<<<<<<<<<<<<<
  *     )
  *     preys = [Prey(**kwargs) for i in range(10)]
  */
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_world_height, __pyx_v_WORLD_HEIGHT) < 0) __PYX_ERR(0, 138, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_world_height, __pyx_v_WORLD_HEIGHT) < 0) __PYX_ERR(0, 140, __pyx_L1_error)
   __pyx_v_kwargs = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "agent.pyx":141
+  /* "agent.pyx":143
  *         world_height=WORLD_HEIGHT,
  *     )
  *     preys = [Prey(**kwargs) for i in range(10)]             # <<<<<<<<<<<<<<
  *     predators = [Predator(**kwargs) for i in range(10)]
  *     plants = [Plant(**kwargs) for i in range(100)]
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   for (__pyx_t_2 = 0; __pyx_t_2 < 10; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
-    __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Prey), __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Prey), __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 141, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 143, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_preys = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "agent.pyx":142
+  /* "agent.pyx":144
  *     )
  *     preys = [Prey(**kwargs) for i in range(10)]
  *     predators = [Predator(**kwargs) for i in range(10)]             # <<<<<<<<<<<<<<
  *     plants = [Plant(**kwargs) for i in range(100)]
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   for (__pyx_t_2 = 0; __pyx_t_2 < 10; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
-    __pyx_t_4 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_4 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Predator), __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 142, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Predator), __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 142, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 144, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __pyx_v_predators = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "agent.pyx":143
+  /* "agent.pyx":145
  *     preys = [Prey(**kwargs) for i in range(10)]
  *     predators = [Predator(**kwargs) for i in range(10)]
  *     plants = [Plant(**kwargs) for i in range(100)]             # <<<<<<<<<<<<<<
  * 
  *     timestep = 0
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   for (__pyx_t_2 = 0; __pyx_t_2 < 0x64; __pyx_t_2+=1) {
     __pyx_v_i = __pyx_t_2;
-    __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Plant), __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Plant), __pyx_empty_tuple, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 143, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 145, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_v_plants = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "agent.pyx":145
+  /* "agent.pyx":147
  *     plants = [Plant(**kwargs) for i in range(100)]
  * 
  *     timestep = 0             # <<<<<<<<<<<<<<
@@ -5049,296 +5155,320 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
  */
   __pyx_v_timestep = 0;
 
-  /* "agent.pyx":146
+  /* "agent.pyx":148
  * 
  *     timestep = 0
  *     while timestep < TIMESTEPS:             # <<<<<<<<<<<<<<
  *         # update all agents
- *         #[f.update([]) for f in plants]  # no need to update the plants; they do not move
+ *         # no need to update the plants; they do not move
  */
   while (1) {
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_timestep); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_timestep); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_v_TIMESTEPS, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_v_TIMESTEPS, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 146, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (!__pyx_t_5) break;
 
-    /* "agent.pyx":149
+    /* "agent.pyx":151
  *         # update all agents
- *         #[f.update([]) for f in plants]  # no need to update the plants; they do not move
- *         [a.update(plants) for a in preys]             # <<<<<<<<<<<<<<
- *         [a.update(preys) for a in predators]
- * 
+ *         # no need to update the plants; they do not move
+ *         for a in preys:             # <<<<<<<<<<<<<<
+ *             a.update(plants)
+ *         for a in predators:
  */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __pyx_v_preys; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
+    __pyx_t_4 = __pyx_v_preys; __Pyx_INCREF(__pyx_t_4); __pyx_t_6 = 0;
     for (;;) {
-      if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
+      if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_4)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 149, __pyx_L1_error)
+      __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 151, __pyx_L1_error)
       #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
       #endif
-      __Pyx_XDECREF_SET(__pyx_v_a, __pyx_t_3);
-      __pyx_t_3 = 0;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_a, __pyx_n_s_update); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 149, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
-        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
-        if (likely(__pyx_t_8)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-          __Pyx_INCREF(__pyx_t_8);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_7, function);
-        }
-      }
-      __pyx_t_3 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_v_plants) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_plants);
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 149, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 149, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_a, __pyx_t_1);
+      __pyx_t_1 = 0;
 
-    /* "agent.pyx":150
- *         #[f.update([]) for f in plants]  # no need to update the plants; they do not move
- *         [a.update(plants) for a in preys]
- *         [a.update(preys) for a in predators]             # <<<<<<<<<<<<<<
- * 
- *         # handle eaten and create new plant
+      /* "agent.pyx":152
+ *         # no need to update the plants; they do not move
+ *         for a in preys:
+ *             a.update(plants)             # <<<<<<<<<<<<<<
+ *         for a in predators:
+ *             a.update(preys)
  */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 150, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __pyx_v_predators; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
-    for (;;) {
-      if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
-      #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 150, __pyx_L1_error)
-      #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 150, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_a, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 152, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      #endif
-      __Pyx_XDECREF_SET(__pyx_v_a, __pyx_t_3);
-      __pyx_t_3 = 0;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_a, __pyx_n_s_update); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 150, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_8 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
-        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_7);
-        if (likely(__pyx_t_8)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
-          __Pyx_INCREF(__pyx_t_8);
+      __pyx_t_7 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+        if (likely(__pyx_t_7)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+          __Pyx_INCREF(__pyx_t_7);
           __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_7, function);
+          __Pyx_DECREF_SET(__pyx_t_3, function);
         }
       }
-      __pyx_t_3 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_8, __pyx_v_preys) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_preys);
-      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 150, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 150, __pyx_L1_error)
+      __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_7, __pyx_v_plants) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_plants);
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "agent.pyx":151
+ *         # update all agents
+ *         # no need to update the plants; they do not move
+ *         for a in preys:             # <<<<<<<<<<<<<<
+ *             a.update(plants)
+ *         for a in predators:
+ */
     }
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "agent.pyx":153
+ *         for a in preys:
+ *             a.update(plants)
+ *         for a in predators:             # <<<<<<<<<<<<<<
+ *             a.update(preys)
+ * 
+ */
+    __pyx_t_4 = __pyx_v_predators; __Pyx_INCREF(__pyx_t_4); __pyx_t_6 = 0;
+    for (;;) {
+      if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_4)) break;
+      #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+      __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
+      #else
+      __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      #endif
+      __Pyx_XDECREF_SET(__pyx_v_a, __pyx_t_1);
+      __pyx_t_1 = 0;
+
+      /* "agent.pyx":154
+ *             a.update(plants)
+ *         for a in predators:
+ *             a.update(preys)             # <<<<<<<<<<<<<<
+ * 
+ *         # handle eaten and create new plant
+ */
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_a, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_7 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
+        if (likely(__pyx_t_7)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+          __Pyx_INCREF(__pyx_t_7);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_3, function);
+        }
+      }
+      __pyx_t_1 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_7, __pyx_v_preys) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_preys);
+      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+      /* "agent.pyx":153
+ *         for a in preys:
+ *             a.update(plants)
+ *         for a in predators:             # <<<<<<<<<<<<<<
+ *             a.update(preys)
+ * 
+ */
+    }
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "agent.pyx":157
  * 
  *         # handle eaten and create new plant
  *         plants = [p for p in plants if p.is_alive is True]             # <<<<<<<<<<<<<<
  *         plants = plants + [Plant(**kwargs) for i in range(2)]
  * 
  */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_1 = __pyx_v_plants; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
     for (;;) {
       if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 153, __pyx_L1_error)
+      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 157, __pyx_L1_error)
       #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_is_alive); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_is_alive); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_5 = (__pyx_t_3 == Py_True);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_9 = (__pyx_t_5 != 0);
-      if (__pyx_t_9) {
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_v_p))) __PYX_ERR(0, 153, __pyx_L1_error)
+      __pyx_t_8 = (__pyx_t_5 != 0);
+      if (__pyx_t_8) {
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_v_p))) __PYX_ERR(0, 157, __pyx_L1_error)
       }
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_plants, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "agent.pyx":154
+    /* "agent.pyx":158
  *         # handle eaten and create new plant
  *         plants = [p for p in plants if p.is_alive is True]
  *         plants = plants + [Plant(**kwargs) for i in range(2)]             # <<<<<<<<<<<<<<
  * 
  *         # handle eaten and create new preys
  */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     for (__pyx_t_2 = 0; __pyx_t_2 < 2; __pyx_t_2+=1) {
       __pyx_v_i = __pyx_t_2;
-      __pyx_t_1 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __pyx_t_1 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Plant), __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Plant), __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 154, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
-    __pyx_t_3 = PyNumber_Add(__pyx_v_plants, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_3 = PyNumber_Add(__pyx_v_plants, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF_SET(__pyx_v_plants, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "agent.pyx":157
+    /* "agent.pyx":161
  * 
  *         # handle eaten and create new preys
  *         preys = [p for p in preys if p.is_alive is True]             # <<<<<<<<<<<<<<
  * 
  *         for p in preys[:]:
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = __pyx_v_preys; __Pyx_INCREF(__pyx_t_4); __pyx_t_6 = 0;
     for (;;) {
       if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_4)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 157, __pyx_L1_error)
+      __pyx_t_1 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
       #else
-      __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(__pyx_t_4, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_is_alive); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_is_alive); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = (__pyx_t_1 == Py_True);
+      __pyx_t_8 = (__pyx_t_1 == Py_True);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_5 = (__pyx_t_9 != 0);
+      __pyx_t_5 = (__pyx_t_8 != 0);
       if (__pyx_t_5) {
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_v_p))) __PYX_ERR(0, 157, __pyx_L1_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_v_p))) __PYX_ERR(0, 161, __pyx_L1_error)
       }
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF_SET(__pyx_v_preys, ((PyObject*)__pyx_t_3));
     __pyx_t_3 = 0;
 
-    /* "agent.pyx":159
+    /* "agent.pyx":163
  *         preys = [p for p in preys if p.is_alive is True]
  * 
  *         for p in preys[:]:             # <<<<<<<<<<<<<<
  *             if p.energy > 5:
  *                 p.energy = 0
  */
-    __pyx_t_3 = __Pyx_PyList_GetSlice(__pyx_v_preys, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyList_GetSlice(__pyx_v_preys, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = __pyx_t_3; __Pyx_INCREF(__pyx_t_4); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     for (;;) {
       if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_4)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 159, __pyx_L1_error)
+      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 163, __pyx_L1_error)
       #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+      __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "agent.pyx":160
+      /* "agent.pyx":164
  * 
  *         for p in preys[:]:
  *             if p.energy > 5:             # <<<<<<<<<<<<<<
  *                 p.energy = 0
  *                 preys.append(Prey(x = p.x + random.randint(-20, 20), y = p.y + random.randint(-20, 20), **kwargs))
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_energy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_energy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_int_5, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_1 = PyObject_RichCompare(__pyx_t_3, __pyx_int_5, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 160, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 164, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_5) {
 
-        /* "agent.pyx":161
+        /* "agent.pyx":165
  *         for p in preys[:]:
  *             if p.energy > 5:
  *                 p.energy = 0             # <<<<<<<<<<<<<<
  *                 preys.append(Prey(x = p.x + random.randint(-20, 20), y = p.y + random.randint(-20, 20), **kwargs))
  * 
  */
-        if (__Pyx_PyObject_SetAttrStr(__pyx_v_p, __pyx_n_s_energy, __pyx_int_0) < 0) __PYX_ERR(0, 161, __pyx_L1_error)
+        if (__Pyx_PyObject_SetAttrStr(__pyx_v_p, __pyx_n_s_energy, __pyx_int_0) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
 
-        /* "agent.pyx":162
+        /* "agent.pyx":166
  *             if p.energy > 5:
  *                 p.energy = 0
  *                 preys.append(Prey(x = p.x + random.randint(-20, 20), y = p.y + random.randint(-20, 20), **kwargs))             # <<<<<<<<<<<<<<
  * 
  *         # handle old and create new predators
  */
-        __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_x); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_x); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_random); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 162, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_randint); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_random); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_randint); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 162, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_7, __pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_10 = PyNumber_Add(__pyx_t_7, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_x, __pyx_t_10) < 0) __PYX_ERR(0, 162, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_x, __pyx_t_10) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_y); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_y); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_random); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 162, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_randint); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_random); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_randint); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 162, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 166, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = PyNumber_Add(__pyx_t_10, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_7 = PyNumber_Add(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_y, __pyx_t_7) < 0) __PYX_ERR(0, 162, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_y, __pyx_t_7) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __pyx_t_1 = __pyx_t_3;
         __pyx_t_3 = 0;
-        if (__Pyx_MergeKeywords(__pyx_t_1, __pyx_v_kwargs) < 0) __PYX_ERR(0, 162, __pyx_L1_error)
-        __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Prey), __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+        if (__Pyx_MergeKeywords(__pyx_t_1, __pyx_v_kwargs) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Prey), __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_preys, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 162, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_preys, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 166, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "agent.pyx":160
+        /* "agent.pyx":164
  * 
  *         for p in preys[:]:
  *             if p.energy > 5:             # <<<<<<<<<<<<<<
@@ -5347,7 +5477,7 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
  */
       }
 
-      /* "agent.pyx":159
+      /* "agent.pyx":163
  *         preys = [p for p in preys if p.is_alive is True]
  * 
  *         for p in preys[:]:             # <<<<<<<<<<<<<<
@@ -5357,137 +5487,137 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "agent.pyx":165
+    /* "agent.pyx":169
  * 
  *         # handle old and create new predators
  *         predators = [p for p in predators if p.age < 2000]             # <<<<<<<<<<<<<<
  * 
  *         for p in predators[:]:
  */
-    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __pyx_v_predators; __Pyx_INCREF(__pyx_t_3); __pyx_t_6 = 0;
     for (;;) {
       if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_3)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 169, __pyx_L1_error)
       #else
-      __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_age); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_age); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = PyObject_RichCompare(__pyx_t_1, __pyx_int_2000, Py_LT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_7 = PyObject_RichCompare(__pyx_t_1, __pyx_int_2000, Py_LT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_5) {
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_v_p))) __PYX_ERR(0, 165, __pyx_L1_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_v_p))) __PYX_ERR(0, 169, __pyx_L1_error)
       }
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF_SET(__pyx_v_predators, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "agent.pyx":167
+    /* "agent.pyx":171
  *         predators = [p for p in predators if p.age < 2000]
  * 
  *         for p in predators[:]:             # <<<<<<<<<<<<<<
  *             if p.energy > 10:
  *                 p.energy = 0
  */
-    __pyx_t_4 = __Pyx_PyList_GetSlice(__pyx_v_predators, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyList_GetSlice(__pyx_v_predators, 0, PY_SSIZE_T_MAX); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __pyx_t_4; __Pyx_INCREF(__pyx_t_3); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     for (;;) {
       if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_3)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_4 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_4 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 171, __pyx_L1_error)
       #else
-      __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_4 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "agent.pyx":168
+      /* "agent.pyx":172
  * 
  *         for p in predators[:]:
  *             if p.energy > 10:             # <<<<<<<<<<<<<<
  *                 p.energy = 0
  *                 predators.append(Predator(x = p.x + random.randint(-20, 20), y = p.y + random.randint(-20, 20), **kwargs))
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_energy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_energy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_int_10, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_int_10, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 172, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 172, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_5) {
 
-        /* "agent.pyx":169
+        /* "agent.pyx":173
  *         for p in predators[:]:
  *             if p.energy > 10:
  *                 p.energy = 0             # <<<<<<<<<<<<<<
  *                 predators.append(Predator(x = p.x + random.randint(-20, 20), y = p.y + random.randint(-20, 20), **kwargs))
  * 
  */
-        if (__Pyx_PyObject_SetAttrStr(__pyx_v_p, __pyx_n_s_energy, __pyx_int_0) < 0) __PYX_ERR(0, 169, __pyx_L1_error)
+        if (__Pyx_PyObject_SetAttrStr(__pyx_v_p, __pyx_n_s_energy, __pyx_int_0) < 0) __PYX_ERR(0, 173, __pyx_L1_error)
 
-        /* "agent.pyx":170
+        /* "agent.pyx":174
  *             if p.energy > 10:
  *                 p.energy = 0
  *                 predators.append(Predator(x = p.x + random.randint(-20, 20), y = p.y + random.randint(-20, 20), **kwargs))             # <<<<<<<<<<<<<<
  * 
  *         # write data to output file
  */
-        __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_random); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 170, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_randint); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_random); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 174, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_randint); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 170, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 174, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_1, __pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_10 = PyNumber_Add(__pyx_t_1, __pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_x, __pyx_t_10) < 0) __PYX_ERR(0, 170, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_x, __pyx_t_10) < 0) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_y); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_p, __pyx_n_s_y); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_random); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 170, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_randint); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_random); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 174, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_randint); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 170, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 174, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_10, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Add(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_y, __pyx_t_1) < 0) __PYX_ERR(0, 170, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+        if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_y, __pyx_t_1) < 0) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_7 = __pyx_t_4;
         __pyx_t_4 = 0;
-        if (__Pyx_MergeKeywords(__pyx_t_7, __pyx_v_kwargs) < 0) __PYX_ERR(0, 170, __pyx_L1_error)
-        __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Predator), __pyx_empty_tuple, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
+        if (__Pyx_MergeKeywords(__pyx_t_7, __pyx_v_kwargs) < 0) __PYX_ERR(0, 174, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_5agent_Predator), __pyx_empty_tuple, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_predators, __pyx_t_4); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyList_Append(__pyx_v_predators, __pyx_t_4); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 174, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "agent.pyx":168
+        /* "agent.pyx":172
  * 
  *         for p in predators[:]:
  *             if p.energy > 10:             # <<<<<<<<<<<<<<
@@ -5496,7 +5626,7 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
  */
       }
 
-      /* "agent.pyx":167
+      /* "agent.pyx":171
  *         predators = [p for p in predators if p.age < 2000]
  * 
  *         for p in predators[:]:             # <<<<<<<<<<<<<<
@@ -5506,7 +5636,7 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "agent.pyx":177
+    /* "agent.pyx":181
  *         #[print(timestep, ',', 'Position',  ',', 'Plant', ',', a.x, ',', a.y, file=f) for a in plants]
  * 
  *         timestep = timestep + 1             # <<<<<<<<<<<<<<
@@ -5516,21 +5646,21 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
     __pyx_v_timestep = (__pyx_v_timestep + 1);
   }
 
-  /* "agent.pyx":179
+  /* "agent.pyx":183
  *         timestep = timestep + 1
  * 
  *     print(len(predators), len(preys), len(plants))             # <<<<<<<<<<<<<<
  */
-  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_predators); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 179, __pyx_L1_error)
-  __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_predators); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_preys); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 179, __pyx_L1_error)
-  __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_preys); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_plants); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 179, __pyx_L1_error)
-  __pyx_t_7 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_plants); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_7 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
@@ -5541,10 +5671,10 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
   __pyx_t_7 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 179, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "agent.pyx":125
+  /* "agent.pyx":127
  * 
  * 
  * cpdef void main(WORLD_WIDTH, WORLD_HEIGHT, TIMESTEPS) except *:             # <<<<<<<<<<<<<<
@@ -5559,7 +5689,7 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_AddTraceback("agent.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
@@ -5567,8 +5697,8 @@ static void __pyx_f_5agent_main(PyObject *__pyx_v_WORLD_WIDTH, PyObject *__pyx_v
   __Pyx_XDECREF(__pyx_v_predators);
   __Pyx_XDECREF(__pyx_v_plants);
   __Pyx_XDECREF(__pyx_v_kwargs);
-  __Pyx_XDECREF(__pyx_v_p);
   __Pyx_XDECREF(__pyx_v_a);
+  __Pyx_XDECREF(__pyx_v_p);
   __Pyx_RefNannyFinishContext();
 }
 
@@ -5609,17 +5739,17 @@ static PyObject *__pyx_pw_5agent_1main(PyObject *__pyx_self, PyObject *__pyx_arg
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_WORLD_HEIGHT)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("main", 1, 3, 3, 1); __PYX_ERR(0, 125, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("main", 1, 3, 3, 1); __PYX_ERR(0, 127, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_TIMESTEPS)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("main", 1, 3, 3, 2); __PYX_ERR(0, 125, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("main", 1, 3, 3, 2); __PYX_ERR(0, 127, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "main") < 0)) __PYX_ERR(0, 125, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "main") < 0)) __PYX_ERR(0, 127, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -5634,7 +5764,7 @@ static PyObject *__pyx_pw_5agent_1main(PyObject *__pyx_self, PyObject *__pyx_arg
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("main", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 125, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("main", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 127, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("agent.main", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5656,8 +5786,8 @@ static PyObject *__pyx_pf_5agent_main(CYTHON_UNUSED PyObject *__pyx_self, PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("main", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5agent_main(__pyx_v_WORLD_WIDTH, __pyx_v_WORLD_HEIGHT, __pyx_v_TIMESTEPS, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 125, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+  __pyx_f_5agent_main(__pyx_v_WORLD_WIDTH, __pyx_v_WORLD_HEIGHT, __pyx_v_TIMESTEPS, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 127, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5775,9 +5905,9 @@ static PyObject *__pyx_pf_5agent_2__pyx_unpickle_Agent(CYTHON_UNUSED PyObject *_
   /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  */
   __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -5788,9 +5918,9 @@ static PyObject *__pyx_pf_5agent_2__pyx_unpickle_Agent(CYTHON_UNUSED PyObject *_
 
     /* "(tree fragment)":5
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):
  *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Agent.__new__(__pyx_type)
  */
     __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
@@ -5809,9 +5939,9 @@ static PyObject *__pyx_pf_5agent_2__pyx_unpickle_Agent(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "(tree fragment)":6
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)             # <<<<<<<<<<<<<<
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)             # <<<<<<<<<<<<<<
  *     __pyx_result = Agent.__new__(__pyx_type)
  *     if __pyx_state is not None:
  */
@@ -5844,15 +5974,15 @@ static PyObject *__pyx_pf_5agent_2__pyx_unpickle_Agent(CYTHON_UNUSED PyObject *_
     /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  */
   }
 
   /* "(tree fragment)":7
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Agent.__new__(__pyx_type)             # <<<<<<<<<<<<<<
  *     if __pyx_state is not None:
  *         __pyx_unpickle_Agent__set_state(<Agent> __pyx_result, __pyx_state)
@@ -5878,7 +6008,7 @@ static PyObject *__pyx_pf_5agent_2__pyx_unpickle_Agent(CYTHON_UNUSED PyObject *_
   __pyx_t_4 = 0;
 
   /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Agent.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_Agent__set_state(<Agent> __pyx_result, __pyx_state)
@@ -5901,7 +6031,7 @@ static PyObject *__pyx_pf_5agent_2__pyx_unpickle_Agent(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Agent.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_Agent__set_state(<Agent> __pyx_result, __pyx_state)
@@ -5914,7 +6044,7 @@ static PyObject *__pyx_pf_5agent_2__pyx_unpickle_Agent(CYTHON_UNUSED PyObject *_
  *         __pyx_unpickle_Agent__set_state(<Agent> __pyx_result, __pyx_state)
  *     return __pyx_result             # <<<<<<<<<<<<<<
  * cdef __pyx_unpickle_Agent__set_state(Agent __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v___pyx_result);
@@ -5947,8 +6077,8 @@ static PyObject *__pyx_pf_5agent_2__pyx_unpickle_Agent(CYTHON_UNUSED PyObject *_
  *         __pyx_unpickle_Agent__set_state(<Agent> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Agent__set_state(Agent __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
 static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj_5agent_Agent *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
@@ -5972,9 +6102,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
   /* "(tree fragment)":12
  *     return __pyx_result
  * cdef __pyx_unpickle_Agent__set_state(Agent __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]             # <<<<<<<<<<<<<<
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]             # <<<<<<<<<<<<<<
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -6018,6 +6148,15 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->is_alive = __pyx_t_4;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 12, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5agent_Agent))))) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->target);
@@ -6028,7 +6167,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6037,7 +6176,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6046,7 +6185,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6055,7 +6194,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6064,7 +6203,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6072,16 +6211,16 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
 
   /* "(tree fragment)":13
  * cdef __pyx_unpickle_Agent__set_state(Agent __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
     __PYX_ERR(1, 13, __pyx_L1_error)
   }
   __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v___pyx_state); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-  __pyx_t_6 = ((__pyx_t_5 > 10) != 0);
+  __pyx_t_6 = ((__pyx_t_5 > 11) != 0);
   if (__pyx_t_6) {
   } else {
     __pyx_t_4 = __pyx_t_6;
@@ -6094,9 +6233,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
   if (__pyx_t_4) {
 
     /* "(tree fragment)":14
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[10])             # <<<<<<<<<<<<<<
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[11])             # <<<<<<<<<<<<<<
  */
     __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
@@ -6107,7 +6246,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(1, 14, __pyx_L1_error)
     }
-    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 11, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_10 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -6129,9 +6268,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
 
     /* "(tree fragment)":13
  * cdef __pyx_unpickle_Agent__set_state(Agent __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   }
 
@@ -6139,8 +6278,8 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Agent__set_state(struct __pyx_obj
  *         __pyx_unpickle_Agent__set_state(<Agent> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Agent__set_state(Agent __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
   /* function exit code */
@@ -6260,9 +6399,9 @@ static PyObject *__pyx_pf_5agent_4__pyx_unpickle_Predator(CYTHON_UNUSED PyObject
   /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  */
   __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -6273,9 +6412,9 @@ static PyObject *__pyx_pf_5agent_4__pyx_unpickle_Predator(CYTHON_UNUSED PyObject
 
     /* "(tree fragment)":5
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):
  *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Predator.__new__(__pyx_type)
  */
     __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
@@ -6294,9 +6433,9 @@ static PyObject *__pyx_pf_5agent_4__pyx_unpickle_Predator(CYTHON_UNUSED PyObject
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "(tree fragment)":6
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)             # <<<<<<<<<<<<<<
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)             # <<<<<<<<<<<<<<
  *     __pyx_result = Predator.__new__(__pyx_type)
  *     if __pyx_state is not None:
  */
@@ -6329,15 +6468,15 @@ static PyObject *__pyx_pf_5agent_4__pyx_unpickle_Predator(CYTHON_UNUSED PyObject
     /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  */
   }
 
   /* "(tree fragment)":7
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Predator.__new__(__pyx_type)             # <<<<<<<<<<<<<<
  *     if __pyx_state is not None:
  *         __pyx_unpickle_Predator__set_state(<Predator> __pyx_result, __pyx_state)
@@ -6363,7 +6502,7 @@ static PyObject *__pyx_pf_5agent_4__pyx_unpickle_Predator(CYTHON_UNUSED PyObject
   __pyx_t_4 = 0;
 
   /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Predator.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_Predator__set_state(<Predator> __pyx_result, __pyx_state)
@@ -6386,7 +6525,7 @@ static PyObject *__pyx_pf_5agent_4__pyx_unpickle_Predator(CYTHON_UNUSED PyObject
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Predator.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_Predator__set_state(<Predator> __pyx_result, __pyx_state)
@@ -6399,7 +6538,7 @@ static PyObject *__pyx_pf_5agent_4__pyx_unpickle_Predator(CYTHON_UNUSED PyObject
  *         __pyx_unpickle_Predator__set_state(<Predator> __pyx_result, __pyx_state)
  *     return __pyx_result             # <<<<<<<<<<<<<<
  * cdef __pyx_unpickle_Predator__set_state(Predator __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v___pyx_result);
@@ -6432,8 +6571,8 @@ static PyObject *__pyx_pf_5agent_4__pyx_unpickle_Predator(CYTHON_UNUSED PyObject
  *         __pyx_unpickle_Predator__set_state(<Predator> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Predator__set_state(Predator __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
 static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_obj_5agent_Predator *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
@@ -6457,9 +6596,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
   /* "(tree fragment)":12
  *     return __pyx_result
  * cdef __pyx_unpickle_Predator__set_state(Predator __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]             # <<<<<<<<<<<<<<
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]             # <<<<<<<<<<<<<<
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -6503,6 +6642,15 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->__pyx_base.is_alive = __pyx_t_4;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 12, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5agent_Agent))))) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.target);
@@ -6513,7 +6661,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6522,7 +6670,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6531,7 +6679,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6540,7 +6688,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6549,7 +6697,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6557,16 +6705,16 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
 
   /* "(tree fragment)":13
  * cdef __pyx_unpickle_Predator__set_state(Predator __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
     __PYX_ERR(1, 13, __pyx_L1_error)
   }
   __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v___pyx_state); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-  __pyx_t_6 = ((__pyx_t_5 > 10) != 0);
+  __pyx_t_6 = ((__pyx_t_5 > 11) != 0);
   if (__pyx_t_6) {
   } else {
     __pyx_t_4 = __pyx_t_6;
@@ -6579,9 +6727,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
   if (__pyx_t_4) {
 
     /* "(tree fragment)":14
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[10])             # <<<<<<<<<<<<<<
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[11])             # <<<<<<<<<<<<<<
  */
     __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
@@ -6592,7 +6740,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(1, 14, __pyx_L1_error)
     }
-    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 11, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_10 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -6614,9 +6762,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
 
     /* "(tree fragment)":13
  * cdef __pyx_unpickle_Predator__set_state(Predator __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   }
 
@@ -6624,8 +6772,8 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Predator__set_state(struct __pyx_
  *         __pyx_unpickle_Predator__set_state(<Predator> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Predator__set_state(Predator __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
   /* function exit code */
@@ -6745,9 +6893,9 @@ static PyObject *__pyx_pf_5agent_6__pyx_unpickle_Prey(CYTHON_UNUSED PyObject *__
   /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  */
   __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -6758,9 +6906,9 @@ static PyObject *__pyx_pf_5agent_6__pyx_unpickle_Prey(CYTHON_UNUSED PyObject *__
 
     /* "(tree fragment)":5
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):
  *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Prey.__new__(__pyx_type)
  */
     __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
@@ -6779,9 +6927,9 @@ static PyObject *__pyx_pf_5agent_6__pyx_unpickle_Prey(CYTHON_UNUSED PyObject *__
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "(tree fragment)":6
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)             # <<<<<<<<<<<<<<
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)             # <<<<<<<<<<<<<<
  *     __pyx_result = Prey.__new__(__pyx_type)
  *     if __pyx_state is not None:
  */
@@ -6814,15 +6962,15 @@ static PyObject *__pyx_pf_5agent_6__pyx_unpickle_Prey(CYTHON_UNUSED PyObject *__
     /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  */
   }
 
   /* "(tree fragment)":7
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Prey.__new__(__pyx_type)             # <<<<<<<<<<<<<<
  *     if __pyx_state is not None:
  *         __pyx_unpickle_Prey__set_state(<Prey> __pyx_result, __pyx_state)
@@ -6848,7 +6996,7 @@ static PyObject *__pyx_pf_5agent_6__pyx_unpickle_Prey(CYTHON_UNUSED PyObject *__
   __pyx_t_4 = 0;
 
   /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Prey.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_Prey__set_state(<Prey> __pyx_result, __pyx_state)
@@ -6871,7 +7019,7 @@ static PyObject *__pyx_pf_5agent_6__pyx_unpickle_Prey(CYTHON_UNUSED PyObject *__
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Prey.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_Prey__set_state(<Prey> __pyx_result, __pyx_state)
@@ -6884,7 +7032,7 @@ static PyObject *__pyx_pf_5agent_6__pyx_unpickle_Prey(CYTHON_UNUSED PyObject *__
  *         __pyx_unpickle_Prey__set_state(<Prey> __pyx_result, __pyx_state)
  *     return __pyx_result             # <<<<<<<<<<<<<<
  * cdef __pyx_unpickle_Prey__set_state(Prey __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v___pyx_result);
@@ -6917,8 +7065,8 @@ static PyObject *__pyx_pf_5agent_6__pyx_unpickle_Prey(CYTHON_UNUSED PyObject *__
  *         __pyx_unpickle_Prey__set_state(<Prey> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Prey__set_state(Prey __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
 static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_5agent_Prey *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
@@ -6942,9 +7090,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
   /* "(tree fragment)":12
  *     return __pyx_result
  * cdef __pyx_unpickle_Prey__set_state(Prey __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]             # <<<<<<<<<<<<<<
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]             # <<<<<<<<<<<<<<
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -6988,6 +7136,15 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->__pyx_base.is_alive = __pyx_t_4;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 12, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5agent_Agent))))) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.target);
@@ -6998,7 +7155,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7007,7 +7164,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7016,7 +7173,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7025,7 +7182,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7034,7 +7191,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7042,16 +7199,16 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
 
   /* "(tree fragment)":13
  * cdef __pyx_unpickle_Prey__set_state(Prey __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
     __PYX_ERR(1, 13, __pyx_L1_error)
   }
   __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v___pyx_state); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-  __pyx_t_6 = ((__pyx_t_5 > 10) != 0);
+  __pyx_t_6 = ((__pyx_t_5 > 11) != 0);
   if (__pyx_t_6) {
   } else {
     __pyx_t_4 = __pyx_t_6;
@@ -7064,9 +7221,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
   if (__pyx_t_4) {
 
     /* "(tree fragment)":14
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[10])             # <<<<<<<<<<<<<<
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[11])             # <<<<<<<<<<<<<<
  */
     __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
@@ -7077,7 +7234,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(1, 14, __pyx_L1_error)
     }
-    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 11, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_10 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -7099,9 +7256,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
 
     /* "(tree fragment)":13
  * cdef __pyx_unpickle_Prey__set_state(Prey __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   }
 
@@ -7109,8 +7266,8 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Prey__set_state(struct __pyx_obj_
  *         __pyx_unpickle_Prey__set_state(<Prey> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Prey__set_state(Prey __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
   /* function exit code */
@@ -7230,9 +7387,9 @@ static PyObject *__pyx_pf_5agent_8__pyx_unpickle_Plant(CYTHON_UNUSED PyObject *_
   /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  */
   __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v___pyx_checksum); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -7243,9 +7400,9 @@ static PyObject *__pyx_pf_5agent_8__pyx_unpickle_Plant(CYTHON_UNUSED PyObject *_
 
     /* "(tree fragment)":5
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):
  *         from pickle import PickleError as __pyx_PickleError             # <<<<<<<<<<<<<<
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Plant.__new__(__pyx_type)
  */
     __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 5, __pyx_L1_error)
@@ -7264,9 +7421,9 @@ static PyObject *__pyx_pf_5agent_8__pyx_unpickle_Plant(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "(tree fragment)":6
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)             # <<<<<<<<<<<<<<
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)             # <<<<<<<<<<<<<<
  *     __pyx_result = Plant.__new__(__pyx_type)
  *     if __pyx_state is not None:
  */
@@ -7299,15 +7456,15 @@ static PyObject *__pyx_pf_5agent_8__pyx_unpickle_Plant(CYTHON_UNUSED PyObject *_
     /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  */
   }
 
   /* "(tree fragment)":7
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Plant.__new__(__pyx_type)             # <<<<<<<<<<<<<<
  *     if __pyx_state is not None:
  *         __pyx_unpickle_Plant__set_state(<Plant> __pyx_result, __pyx_state)
@@ -7333,7 +7490,7 @@ static PyObject *__pyx_pf_5agent_8__pyx_unpickle_Plant(CYTHON_UNUSED PyObject *_
   __pyx_t_4 = 0;
 
   /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Plant.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_Plant__set_state(<Plant> __pyx_result, __pyx_state)
@@ -7356,7 +7513,7 @@ static PyObject *__pyx_pf_5agent_8__pyx_unpickle_Plant(CYTHON_UNUSED PyObject *_
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
     /* "(tree fragment)":8
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  *     __pyx_result = Plant.__new__(__pyx_type)
  *     if __pyx_state is not None:             # <<<<<<<<<<<<<<
  *         __pyx_unpickle_Plant__set_state(<Plant> __pyx_result, __pyx_state)
@@ -7369,7 +7526,7 @@ static PyObject *__pyx_pf_5agent_8__pyx_unpickle_Plant(CYTHON_UNUSED PyObject *_
  *         __pyx_unpickle_Plant__set_state(<Plant> __pyx_result, __pyx_state)
  *     return __pyx_result             # <<<<<<<<<<<<<<
  * cdef __pyx_unpickle_Plant__set_state(Plant __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v___pyx_result);
@@ -7402,8 +7559,8 @@ static PyObject *__pyx_pf_5agent_8__pyx_unpickle_Plant(CYTHON_UNUSED PyObject *_
  *         __pyx_unpickle_Plant__set_state(<Plant> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Plant__set_state(Plant __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
 static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj_5agent_Plant *__pyx_v___pyx_result, PyObject *__pyx_v___pyx_state) {
@@ -7427,9 +7584,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
   /* "(tree fragment)":12
  *     return __pyx_result
  * cdef __pyx_unpickle_Plant__set_state(Plant __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]             # <<<<<<<<<<<<<<
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]             # <<<<<<<<<<<<<<
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
@@ -7473,6 +7630,15 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
   }
   __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 4, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v___pyx_result->__pyx_base.is_alive = __pyx_t_4;
+  if (unlikely(__pyx_v___pyx_state == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+    __PYX_ERR(1, 12, __pyx_L1_error)
+  }
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
   if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5agent_Agent))))) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v___pyx_result->__pyx_base.target);
@@ -7483,7 +7649,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 5, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7492,7 +7658,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 6, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7501,7 +7667,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 7, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7510,7 +7676,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 8, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7519,7 +7685,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 12, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 9, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = __pyx_PyFloat_AsDouble(__pyx_t_1); if (unlikely((__pyx_t_3 == (double)-1) && PyErr_Occurred())) __PYX_ERR(1, 12, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7527,16 +7693,16 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
 
   /* "(tree fragment)":13
  * cdef __pyx_unpickle_Plant__set_state(Plant __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   if (unlikely(__pyx_v___pyx_state == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
     __PYX_ERR(1, 13, __pyx_L1_error)
   }
   __pyx_t_5 = PyTuple_GET_SIZE(__pyx_v___pyx_state); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(1, 13, __pyx_L1_error)
-  __pyx_t_6 = ((__pyx_t_5 > 10) != 0);
+  __pyx_t_6 = ((__pyx_t_5 > 11) != 0);
   if (__pyx_t_6) {
   } else {
     __pyx_t_4 = __pyx_t_6;
@@ -7549,9 +7715,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
   if (__pyx_t_4) {
 
     /* "(tree fragment)":14
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
- *         __pyx_result.__dict__.update(__pyx_state[10])             # <<<<<<<<<<<<<<
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
+ *         __pyx_result.__dict__.update(__pyx_state[11])             # <<<<<<<<<<<<<<
  */
     __pyx_t_8 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v___pyx_result), __pyx_n_s_dict); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
@@ -7562,7 +7728,7 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
       __PYX_ERR(1, 14, __pyx_L1_error)
     }
-    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 10, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt_Tuple(__pyx_v___pyx_state, 11, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 14, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_10 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -7584,9 +7750,9 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
 
     /* "(tree fragment)":13
  * cdef __pyx_unpickle_Plant__set_state(Plant __pyx_result, tuple __pyx_state):
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
- *         __pyx_result.__dict__.update(__pyx_state[10])
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):             # <<<<<<<<<<<<<<
+ *         __pyx_result.__dict__.update(__pyx_state[11])
  */
   }
 
@@ -7594,8 +7760,8 @@ static PyObject *__pyx_f_5agent___pyx_unpickle_Plant__set_state(struct __pyx_obj
  *         __pyx_unpickle_Plant__set_state(<Plant> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Plant__set_state(Plant __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
 
   /* function exit code */
@@ -7710,6 +7876,20 @@ static int __pyx_setprop_5agent_5Agent_energy(PyObject *o, PyObject *v, CYTHON_U
   }
 }
 
+static PyObject *__pyx_getprop_5agent_5Agent_is_alive(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_5agent_5Agent_8is_alive_1__get__(o);
+}
+
+static int __pyx_setprop_5agent_5Agent_is_alive(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+  if (v) {
+    return __pyx_pw_5agent_5Agent_8is_alive_3__set__(o, v);
+  }
+  else {
+    PyErr_SetString(PyExc_NotImplementedError, "__del__");
+    return -1;
+  }
+}
+
 static PyMethodDef __pyx_methods_5agent_Agent[] = {
   {"update", (PyCFunction)__pyx_pw_5agent_5Agent_3update, METH_O, 0},
   {"__reduce_cython__", (PyCFunction)__pyx_pw_5agent_5Agent_5__reduce_cython__, METH_NOARGS, 0},
@@ -7723,6 +7903,7 @@ static struct PyGetSetDef __pyx_getsets_5agent_Agent[] = {
   {(char *)"vmax", __pyx_getprop_5agent_5Agent_vmax, __pyx_setprop_5agent_5Agent_vmax, (char *)0, 0},
   {(char *)"age", __pyx_getprop_5agent_5Agent_age, __pyx_setprop_5agent_5Agent_age, (char *)0, 0},
   {(char *)"energy", __pyx_getprop_5agent_5Agent_energy, __pyx_setprop_5agent_5Agent_energy, (char *)0, 0},
+  {(char *)"is_alive", __pyx_getprop_5agent_5Agent_is_alive, __pyx_setprop_5agent_5Agent_is_alive, (char *)0, 0},
   {0, 0, 0, 0, 0}
 };
 
@@ -8166,8 +8347,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 111, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_n_s_super); if (!__pyx_builtin_super) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 143, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -8177,25 +8358,25 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "agent.pyx":162
+  /* "agent.pyx":166
  *             if p.energy > 5:
  *                 p.energy = 0
  *                 preys.append(Prey(x = p.x + random.randint(-20, 20), y = p.y + random.randint(-20, 20), **kwargs))             # <<<<<<<<<<<<<<
  * 
  *         # handle old and create new predators
  */
-  __pyx_tuple_ = PyTuple_Pack(2, __pyx_int_neg_20, __pyx_int_20); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(2, __pyx_int_neg_20, __pyx_int_20); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
   /* "(tree fragment)":4
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
- *     if __pyx_checksum not in (0xcb77384, 0x8e01f6e, 0x03c3168):             # <<<<<<<<<<<<<<
+ *     if __pyx_checksum not in (0x0c0dc9a, 0x515b406, 0xfbd0416):             # <<<<<<<<<<<<<<
  *         from pickle import PickleError as __pyx_PickleError
- *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0xcb77384, 0x8e01f6e, 0x03c3168) = (age, dx, dy, energy, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
+ *         raise __pyx_PickleError("Incompatible checksums (0x%x vs (0x0c0dc9a, 0x515b406, 0xfbd0416) = (age, dx, dy, energy, is_alive, target, vmax, world_height, world_width, x, y))" % __pyx_checksum)
  */
-  __pyx_tuple__2 = PyTuple_Pack(3, __pyx_int_213349252, __pyx_int_148905838, __pyx_int_3944808); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(1, 4, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(3, __pyx_int_12639386, __pyx_int_85308422, __pyx_int_264045590); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(1, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
@@ -8234,9 +8415,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   __pyx_int_10 = PyInt_FromLong(10); if (unlikely(!__pyx_int_10)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_20 = PyInt_FromLong(20); if (unlikely(!__pyx_int_20)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_2000 = PyInt_FromLong(2000); if (unlikely(!__pyx_int_2000)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_3944808 = PyInt_FromLong(3944808L); if (unlikely(!__pyx_int_3944808)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_148905838 = PyInt_FromLong(148905838L); if (unlikely(!__pyx_int_148905838)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __pyx_int_213349252 = PyInt_FromLong(213349252L); if (unlikely(!__pyx_int_213349252)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_12639386 = PyInt_FromLong(12639386L); if (unlikely(!__pyx_int_12639386)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_85308422 = PyInt_FromLong(85308422L); if (unlikely(!__pyx_int_85308422)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_264045590 = PyInt_FromLong(264045590L); if (unlikely(!__pyx_int_264045590)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_neg_20 = PyInt_FromLong(-20); if (unlikely(!__pyx_int_neg_20)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -8298,44 +8479,44 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtabptr_5agent_Predator = &__pyx_vtable_5agent_Predator;
   __pyx_vtable_5agent_Predator.__pyx_base = *__pyx_vtabptr_5agent_Agent;
   __pyx_type_5agent_Predator.tp_base = __pyx_ptype_5agent_Agent;
-  if (PyType_Ready(&__pyx_type_5agent_Predator) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5agent_Predator) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5agent_Predator.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_5agent_Predator.tp_dictoffset && __pyx_type_5agent_Predator.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_5agent_Predator.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_5agent_Predator.tp_dict, __pyx_vtabptr_5agent_Predator) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Predator, (PyObject *)&__pyx_type_5agent_Predator) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5agent_Predator) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_5agent_Predator.tp_dict, __pyx_vtabptr_5agent_Predator) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Predator, (PyObject *)&__pyx_type_5agent_Predator) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5agent_Predator) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
   __pyx_ptype_5agent_Predator = &__pyx_type_5agent_Predator;
   __pyx_vtabptr_5agent_Prey = &__pyx_vtable_5agent_Prey;
   __pyx_vtable_5agent_Prey.__pyx_base = *__pyx_vtabptr_5agent_Agent;
   __pyx_type_5agent_Prey.tp_base = __pyx_ptype_5agent_Agent;
-  if (PyType_Ready(&__pyx_type_5agent_Prey) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5agent_Prey) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5agent_Prey.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_5agent_Prey.tp_dictoffset && __pyx_type_5agent_Prey.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_5agent_Prey.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_5agent_Prey.tp_dict, __pyx_vtabptr_5agent_Prey) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Prey, (PyObject *)&__pyx_type_5agent_Prey) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5agent_Prey) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_5agent_Prey.tp_dict, __pyx_vtabptr_5agent_Prey) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Prey, (PyObject *)&__pyx_type_5agent_Prey) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5agent_Prey) < 0) __PYX_ERR(0, 116, __pyx_L1_error)
   __pyx_ptype_5agent_Prey = &__pyx_type_5agent_Prey;
   __pyx_vtabptr_5agent_Plant = &__pyx_vtable_5agent_Plant;
   __pyx_vtable_5agent_Plant.__pyx_base = *__pyx_vtabptr_5agent_Agent;
   __pyx_type_5agent_Plant.tp_base = __pyx_ptype_5agent_Agent;
-  if (PyType_Ready(&__pyx_type_5agent_Plant) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_5agent_Plant) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_5agent_Plant.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_5agent_Plant.tp_dictoffset && __pyx_type_5agent_Plant.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_5agent_Plant.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_5agent_Plant.tp_dict, __pyx_vtabptr_5agent_Plant) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Plant, (PyObject *)&__pyx_type_5agent_Plant) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5agent_Plant) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_5agent_Plant.tp_dict, __pyx_vtabptr_5agent_Plant) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Plant, (PyObject *)&__pyx_type_5agent_Plant) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5agent_Plant) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
   __pyx_ptype_5agent_Plant = &__pyx_type_5agent_Plant;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -8603,8 +8784,8 @@ if (!__Pyx_RefNanny) {
  *         __pyx_unpickle_Agent__set_state(<Agent> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Agent__set_state(Agent __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5agent_5__pyx_unpickle_Predator, NULL, __pyx_n_s_agent); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -8625,8 +8806,8 @@ if (!__Pyx_RefNanny) {
  *         __pyx_unpickle_Prey__set_state(<Prey> __pyx_result, __pyx_state)
  *     return __pyx_result
  * cdef __pyx_unpickle_Prey__set_state(Prey __pyx_result, tuple __pyx_state):             # <<<<<<<<<<<<<<
- *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.target = __pyx_state[4]; __pyx_result.vmax = __pyx_state[5]; __pyx_result.world_height = __pyx_state[6]; __pyx_result.world_width = __pyx_state[7]; __pyx_result.x = __pyx_state[8]; __pyx_result.y = __pyx_state[9]
- *     if len(__pyx_state) > 10 and hasattr(__pyx_result, '__dict__'):
+ *     __pyx_result.age = __pyx_state[0]; __pyx_result.dx = __pyx_state[1]; __pyx_result.dy = __pyx_state[2]; __pyx_result.energy = __pyx_state[3]; __pyx_result.is_alive = __pyx_state[4]; __pyx_result.target = __pyx_state[5]; __pyx_result.vmax = __pyx_state[6]; __pyx_result.world_height = __pyx_state[7]; __pyx_result.world_width = __pyx_state[8]; __pyx_result.x = __pyx_state[9]; __pyx_result.y = __pyx_state[10]
+ *     if len(__pyx_state) > 11 and hasattr(__pyx_result, '__dict__'):
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5agent_9__pyx_unpickle_Plant, NULL, __pyx_n_s_agent); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -9078,20 +9259,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
 }
 #endif
 
-/* PyObjectSetAttrStr */
-#if CYTHON_USE_TYPE_SLOTS
-static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value) {
-    PyTypeObject* tp = Py_TYPE(obj);
-    if (likely(tp->tp_setattro))
-        return tp->tp_setattro(obj, attr_name, value);
-#if PY_MAJOR_VERSION < 3
-    if (likely(tp->tp_setattr))
-        return tp->tp_setattr(obj, PyString_AS_STRING(attr_name), value);
-#endif
-    return PyObject_SetAttr(obj, attr_name, value);
-}
-#endif
-
 /* PyObjectCall2Args */
 static CYTHON_UNUSED PyObject* __Pyx_PyObject_Call2Args(PyObject* function, PyObject* arg1, PyObject* arg2) {
     PyObject *args, *result = NULL;
@@ -9388,6 +9555,20 @@ static CYTHON_INLINE PyObject* __Pyx_PyTuple_GetSlice(
         ((PyTupleObject*)dest)->ob_item,
         length);
     return dest;
+}
+#endif
+
+/* PyObjectSetAttrStr */
+#if CYTHON_USE_TYPE_SLOTS
+static CYTHON_INLINE int __Pyx_PyObject_SetAttrStr(PyObject* obj, PyObject* attr_name, PyObject* value) {
+    PyTypeObject* tp = Py_TYPE(obj);
+    if (likely(tp->tp_setattro))
+        return tp->tp_setattro(obj, attr_name, value);
+#if PY_MAJOR_VERSION < 3
+    if (likely(tp->tp_setattr))
+        return tp->tp_setattr(obj, PyString_AS_STRING(attr_name), value);
+#endif
+    return PyObject_SetAttr(obj, attr_name, value);
 }
 #endif
 
